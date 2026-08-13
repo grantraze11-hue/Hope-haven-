@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hope and Haven Houses LLC | Sober Living Home</title>
+  
+  <!-- HEIC Conversion Library for non-Safari Browsers -->
+  <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+
   <style>
     :root {
       --dark-pink: #9d174d;
@@ -237,6 +241,108 @@
 
     .section-title p {
       color: var(--text-muted);
+    }
+
+    /* CAROUSEL VIEWER STYLES */
+    .carousel-section {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 4px 15px rgba(157, 23, 77, 0.05);
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      height: 480px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 12px;
+      background-color: #1c1917;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #18181b;
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      color: #ffffff;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .prev-btn, .next-btn {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 12px 18px;
+      color: white;
+      font-weight: bold;
+      font-size: 22px;
+      transition: 0.3s ease;
+      border-radius: 50%;
+      background-color: rgba(157, 23, 77, 0.6);
+      border: none;
+      user-select: none;
+      z-index: 10;
+    }
+
+    .next-btn {
+      right: 15px;
+    }
+
+    .prev-btn {
+      left: 15px;
+    }
+
+    .prev-btn:hover, .next-btn:hover {
+      background-color: var(--dark-pink);
+    }
+
+    .dots-container {
+      text-align: center;
+      padding-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      background-color: var(--border-pink);
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .dot.active-dot, .dot:hover {
+      background-color: var(--medium-pink);
+      transform: scale(1.2);
     }
 
     /* Mission & Vision Section */
@@ -687,6 +793,9 @@
       .tab-bar {
         flex-direction: column;
       }
+      .carousel-container {
+        height: 320px;
+      }
     }
   </style>
 </head>
@@ -697,6 +806,7 @@
     <a onclick="switchTab('dashboard')" class="logo">🌸 Hope and Haven Houses LLC</a>
     <ul>
       <li><a onclick="scrollToSection('about')">About</a></li>
+      <li><a onclick="scrollToSection('house-tour')">House Tour</a></li>
       <li><a onclick="switchTab('testimonials')">Testimonials</a></li>
       <li><a onclick="switchTab('donate-items')">Item Donations</a></li>
       <li><a onclick="switchTab('apply')" style="color: var(--accent-pink); font-weight:700;">Apply Now</a></li>
@@ -743,6 +853,84 @@
             <h3>Our Vision</h3>
             <p>Our vision is to see every woman who enters our home experience lasting freedom from addiction through the transforming power of faith, discovering her God-given identity, purpose, and hope. We envision a community where women are restored in spirit, mind, and body, equipped to live healthy, sober, and independent lives, and empowered to strengthen their families, serve their communities, and inspire others through lives marked by faith, resilience, and love.</p>
           </div>
+        </div>
+      </section>
+
+      <!-- CAROUSEL SECTION (HOUSE TOUR) -->
+      <section id="house-tour" class="carousel-section">
+        <div class="section-title">
+          <h2>Tour Our Home</h2>
+          <p>Take a look inside our comfortable, supportive, and clean living spaces.</p>
+        </div>
+
+        <div class="carousel-container">
+          <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+          
+          <div class="carousel-slide">
+            <img src="IMG_7720.HEIC" alt="Exterior View">
+            <div class="carousel-caption">🏡 Home Exterior & Porch</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7722.HEIC" alt="Living Room Area">
+            <div class="carousel-caption">🛋️ Main Living Room & Common Area</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7724.HEIC" alt="Main Entry and Hallway">
+            <div class="carousel-caption">🛋️ Main Entryway & Staircase</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7726.HEIC" alt="Resident Bedroom 1">
+            <div class="carousel-caption">🛏️ Peaceful & Cozy Bedroom</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7727.HEIC" alt="Resident Bedroom 2">
+            <div class="carousel-caption">🛏️ Comfortable Resident Living Space</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7730.HEIC" alt="Modern Bathroom">
+            <div class="carousel-caption">🧼 Clean & Modern Bathroom Vanity</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7733.HEIC" alt="Stairs leading down">
+            <div class="carousel-caption">🪜 Lower Level Access</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7734.HEIC" alt="Lower Level Lounge">
+            <div class="carousel-caption">📺 Lower Level Community Room</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7739.HEIC" alt="Kitchen Counter">
+            <div class="carousel-caption">☕ Kitchen Island & Bible Study Area</div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="IMG_7740.HEIC" alt="Open Living Space View">
+            <div class="carousel-caption">🌸 Spacious Main Level Floorplan</div>
+          </div>
+
+          <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="dots-container">
+          <span class="dot" onclick="setSlide(0)"></span>
+          <span class="dot" onclick="setSlide(1)"></span>
+          <span class="dot" onclick="setSlide(2)"></span>
+          <span class="dot" onclick="setSlide(3)"></span>
+          <span class="dot" onclick="setSlide(4)"></span>
+          <span class="dot" onclick="setSlide(5)"></span>
+          <span class="dot" onclick="setSlide(6)"></span>
+          <span class="dot" onclick="setSlide(7)"></span>
+          <span class="dot" onclick="setSlide(8)"></span>
+          <span class="dot" onclick="setSlide(9)"></span>
         </div>
       </section>
 
@@ -1213,6 +1401,54 @@
 
   <!-- JavaScript Controls -->
   <script>
+    /* HEIC Image Cross-Browser Converter */
+    document.addEventListener("DOMContentLoaded", function() {
+      const images = document.querySelectorAll('.carousel-slide img');
+      images.forEach(img => {
+        const src = img.getAttribute('src');
+        if (src && src.toLowerCase().endsWith('.heic')) {
+          fetch(src)
+            .then(res => res.blob())
+            .then(blob => heic2any({ blob: blob, toType: "image/jpeg", quality: 0.8 }))
+            .then(conversionResult => {
+              const url = URL.createObjectURL(conversionResult);
+              img.src = url;
+            })
+            .catch(err => {
+              console.log("HEIC rendering natively or error converting:", err);
+            });
+        }
+      });
+      showSlide(slideIndex);
+    });
+
+    /* Carousel Viewer Controller */
+    let slideIndex = 0;
+
+    function showSlide(index) {
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".dot");
+
+      if (index >= slides.length) slideIndex = 0;
+      if (index < 0) slideIndex = slides.length - 1;
+
+      slides.forEach(slide => slide.style.display = "none");
+      dots.forEach(dot => dot.classList.remove("active-dot"));
+
+      slides[slideIndex].style.display = "block";
+      if(dots[slideIndex]) {
+        dots[slideIndex].classList.add("active-dot");
+      }
+    }
+
+    function changeSlide(step) {
+      showSlide(slideIndex += step);
+    }
+
+    function setSlide(index) {
+      showSlide(slideIndex = index);
+    }
+
     /* Tab Switching Logic */
     function switchTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(tab => {
