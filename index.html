@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hope and Haven Houses LLC | Sober Living Home</title>
+
+  <style>
+    :root {
+      --dark-pink: #9d174d;
+      --medium-pink: #be185d;
+      --accent-pink: #db2777;
+      --light-pink-bg: #fff5f7;
+      --card-pink: #fce7f3;
+      --border-pink: #fbcfe8;
+      --text-main: #292524;
+      --text-muted: #701a75;
+      --card-bg: #ffffff;
+      --glow-pink: rgba(219, 39, 119, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--light-pink-bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image: radial-gradient(#fbcfe8 0.75px, transparent 0.75px);
+      background-size: 24px 24px;
+    }
+
+    /* Dynamic Glassmorphism Nav */
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--border-pink);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(157, 23, 77, 0.08);
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--dark-pink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    nav .logo:hover {
+      transform: scale(1.02);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      padding: 0.35rem 0.65rem;
+      border-radius: 8px;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent-pink);
+      background: var(--card-pink);
+    }
+
+    .nav-donate-btn {
+      background: var(--medium-pink);
+      color: white !important;
+      padding: 0.45rem 1.1rem !important;
+      border-radius: 20px;
+      transition: all 0.25s ease !important;
+      box-shadow: 0 4px 12px rgba(190, 24, 93, 0.25);
+    }
+
+    .nav-donate-btn:hover {
+      background: var(--dark-pink) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(190, 24, 93, 0.35);
+    }
+
+    /* Bold Hero Header */
+    header {
+      background: linear-gradient(rgba(157, 23, 77, 0.85), rgba(157, 23, 77, 0.88)), 
+                  url('https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 5.5rem 1rem;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0.5rem;
+      font-family: Georgia, serif;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header .subtitle {
+      font-size: 1.25rem;
+      max-width: 680px;
+      margin: 0 auto 1.25rem auto;
+      color: #fce7f3;
+      font-weight: 300;
+    }
+
+    header .owner-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 0.45rem 1.25rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .hero-btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--medium-pink);
+      color: white;
+      padding: 0.85rem 1.75rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      box-shadow: 0 4px 14px rgba(190, 24, 93, 0.3);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: var(--dark-pink);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(190, 24, 93, 0.4);
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: var(--dark-pink);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--card-pink);
+      color: var(--dark-pink);
+    }
+
+    /* Tab Switcher Bar */
+    .tab-navigation-wrapper {
+      max-width: 1050px;
+      margin: 2.5rem auto 0 auto;
+      padding: 0 1rem;
+    }
+
+    .tab-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      border-bottom: 2px solid var(--border-pink);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #ffffff;
+      border: 2px solid var(--border-pink);
+      color: var(--text-muted);
+      padding: 0.75rem 1.35rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(157, 23, 77, 0.04);
+    }
+
+    .tab-btn:hover {
+      background-color: var(--card-pink);
+      color: var(--dark-pink);
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background-color: var(--medium-pink);
+      color: white;
+      border-color: var(--medium-pink);
+      box-shadow: 0 6px 16px rgba(190, 24, 93, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto 3rem auto;
+      padding: 0 1rem;
+    }
+
+    /* Dynamic Reveal Animations */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: dynamicFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes dynamicFadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(14px) scale(0.99); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.35rem;
+      color: var(--dark-pink);
+      font-family: Georgia, serif;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Carousel Viewer Styles */
+    .carousel-section {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(157, 23, 77, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .carousel-section:hover {
+      box-shadow: 0 14px 40px rgba(157, 23, 77, 0.12);
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      height: 520px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 14px;
+      background-color: #1c1917;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #18181b;
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      color: #ffffff;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .prev-btn, .next-btn {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 12px 18px;
+      color: white;
+      font-weight: bold;
+      font-size: 22px;
+      transition: all 0.2s ease;
+      border-radius: 50%;
+      background-color: rgba(157, 23, 77, 0.7);
+      border: none;
+      user-select: none;
+      z-index: 10;
+    }
+
+    .next-btn { right: 15px; }
+    .prev-btn { left: 15px; }
+
+    .prev-btn:hover, .next-btn:hover {
+      background-color: var(--dark-pink);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .dots-container {
+      text-align: center;
+      padding-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      background-color: var(--border-pink);
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .dot.active-dot, .dot:hover {
+      background-color: var(--medium-pink);
+      transform: scale(1.25);
+    }
+
+    /* Mission & Vision Section */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .mv-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-pink);
+      border-top: 5px solid var(--accent-pink);
+      border-radius: 14px;
+      padding: 2.25rem;
+      box-shadow: 0 8px 24px rgba(157, 23, 77, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mv-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(157, 23, 77, 0.1);
+    }
+
+    .mv-card h3 {
+      color: var(--dark-pink);
+      margin-bottom: 1rem;
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .mv-card p {
+      text-align: justify;
+    }
+
+    /* Rules Grid */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .rule-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-pink);
+      border-top: 5px solid var(--medium-pink);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(157, 23, 77, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .rule-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(157, 23, 77, 0.1);
+    }
+
+    .rule-card h3 {
+      color: var(--dark-pink);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-pink);
+      border-left: 6px solid var(--accent-pink);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(157, 23, 77, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(157, 23, 77, 0.1);
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: #44403c;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card h4 {
+      font-weight: 600;
+      color: var(--dark-pink);
+    }
+
+    /* Financial Donations Section */
+    .donation-section {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-radius: 18px;
+      padding: 2.5rem 1.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 24px rgba(157, 23, 77, 0.05);
+    }
+
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .payment-card {
+      background: var(--light-pink-bg);
+      border: 1px solid var(--border-pink);
+      border-radius: 14px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .payment-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(157, 23, 77, 0.12);
+    }
+
+    .payment-card h3 {
+      margin-bottom: 0.4rem;
+      color: var(--dark-pink);
+    }
+
+    .payment-card a.pay-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.45rem 1.2rem;
+      background: var(--medium-pink);
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .payment-card a.pay-link:hover {
+      background: var(--dark-pink);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-top: 5px solid var(--accent-pink);
+      border-radius: 18px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 24px rgba(157, 23, 77, 0.05);
+    }
+
+    /* Wishlist Dynamic Elements */
+    .wishlist-summary-card {
+      background: linear-gradient(135deg, #fff0f5, #fce7f3);
+      border: 1px solid var(--border-pink);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .wishlist-category-card {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-top: 5px solid var(--accent-pink);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(157, 23, 77, 0.05);
+    }
+
+    .wishlist-category-card h3 {
+      color: var(--dark-pink);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      border-bottom: 1px solid var(--border-pink);
+      padding-bottom: 0.5rem;
+    }
+
+    .wishlist-ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .wishlist-ul li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--border-pink);
+      font-size: 0.95rem;
+    }
+
+    .wishlist-ul li:last-child {
+      border-bottom: none;
+    }
+
+    .urgency-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .urgency-high {
+      background: #ffe4e6;
+      color: #be123c;
+    }
+
+    .urgency-medium {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .urgency-standard {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    /* Form Cards */
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-pink);
+      border-radius: 18px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 12px 30px rgba(157, 23, 77, 0.07);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--dark-pink);
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid var(--border-pink);
+      border-radius: 10px;
+      font-size: 1rem;
+      background-color: #fff;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-pink);
+      box-shadow: 0 0 0 4px var(--glow-pink);
+    }
+
+    .form-section-title {
+      color: var(--medium-pink);
+      border-bottom: 2px solid var(--border-pink);
+      padding-bottom: 0.5rem;
+      margin: 1.5rem 0 1.25rem 0;
+      font-size: 1.25rem;
+    }
+
+    /* Multi-step Form Progress Bar */
+    .progress-bar-container {
+      width: 100%;
+      background-color: var(--card-pink);
+      height: 8px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 25%;
+      background-color: var(--medium-pink);
+      transition: width 0.3s ease;
+    }
+
+    .step-indicator {
+      text-align: right;
+      font-size: 0.85rem;
+      color: var(--dark-pink);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active-step {
+      display: block;
+      animation: dynamicFadeIn 0.3s ease-in-out;
+    }
+
+    .form-btn-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .form-btn-group button {
+      flex: 1;
+    }
+
+    /* Weekly Schedule Grid Styling */
+    .schedule-section {
+      margin: 1.5rem 0;
+      background: var(--light-pink-bg);
+      border: 1px solid var(--border-pink);
+      padding: 1.25rem;
+      border-radius: 12px;
+    }
+
+    .schedule-title {
+      font-weight: 700;
+      color: var(--dark-pink);
+      font-size: 1.1rem;
+    }
+
+    .schedule-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .day-box label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--dark-pink);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .day-box textarea {
+      width: 100%;
+      height: 70px;
+      font-size: 0.8rem;
+      padding: 0.4rem;
+      border: 1px solid var(--border-pink);
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    /* Warning & Alert Boxes */
+    .legal-warning-box {
+      background-color: #fef2f2;
+      border: 2px solid #ef4444;
+      color: #991b1b;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .policy-alert-box {
+      background-color: #fff1f2;
+      border: 2px dashed #be185d;
+      color: #881337;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .agreement-box {
+      background: var(--light-pink-bg);
+      padding: 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border-pink);
+      border-left: 4px solid var(--medium-pink);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin-top: 0.25rem;
+      accent-color: var(--medium-pink);
+      transform: scale(1.2);
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background: var(--medium-pink);
+      color: white;
+      border: none;
+      padding: 1.1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s ease;
+      box-shadow: 0 4px 14px rgba(190, 24, 93, 0.25);
+    }
+
+    button[type="submit"]:hover {
+      background: var(--dark-pink);
+      transform: translateY(-2px);
+    }
+
+    /* Admin Styles */
+    .admin-card {
+      max-width: 520px;
+      margin: 0 auto 3rem auto;
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-top: 5px solid var(--accent-pink);
+      border-radius: 18px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 12px 30px rgba(157, 23, 77, 0.08);
+      text-align: center;
+    }
+
+    .admin-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .admin-passcode-input {
+      letter-spacing: 0.35rem;
+      font-size: 1.3rem !important;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .admin-error-msg {
+      color: #dc2626;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    .admin-panel {
+      display: none;
+      animation: dynamicFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .admin-panel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .admin-action-card {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(157, 23, 77, 0.05);
+      text-align: left;
+    }
+
+    .admin-action-card h3 {
+      color: var(--dark-pink);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .admin-badge {
+      display: inline-block;
+      background: var(--card-pink);
+      color: var(--dark-pink);
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .admin-list-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .admin-list-table th, .admin-list-table td {
+      padding: 0.6rem;
+      border-bottom: 1px solid var(--border-pink);
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .admin-del-btn {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #f87171;
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .admin-del-btn:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      animation: dynamicFadeIn 0.2s ease-out;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 2px solid var(--border-pink);
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: color 0.2s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--dark-pink);
+    }
+
+    /* Footer & Discreet Admin Link */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem 1rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-pink);
+      margin-top: 4rem;
+      background: #ffffff;
+    }
+
+    .footer-admin-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .footer-admin-link:hover {
+      color: var(--dark-pink);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      nav ul {
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      header h1 {
+        font-size: 2.25rem;
+      }
+      .tab-bar {
+        flex-direction: column;
+      }
+      .carousel-container {
+        height: 340px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a onclick="switchTab('dashboard')" class="logo">🌸 Hope and Haven Houses LLC</a>
+    <ul>
+      <li><a onclick="switchTab('dashboard')">Home</a></li>
+      <li><a onclick="switchTab('tour')">House Tour</a></li>
+      <li><a onclick="switchTab('program')">Standards</a></li>
+      <li><a onclick="switchTab('testimonials')">Testimonials</a></li>
+      <li><a onclick="switchTab('wishlist')">Wishlist & Items</a></li>
+      <li><a onclick="switchTab('contact')">Contact</a></li>
+      <li><a onclick="switchTab('apply')" style="color: var(--accent-pink); font-weight:700;">Apply Now</a></li>
+      <li><a onclick="openDonateModal()" class="nav-donate-btn">💸 Donate</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header / Hero Section -->
+  <header>
+    <h1>Hope and Haven Houses LLC</h1>
+    <p class="subtitle">A safe, structured, faith-based sober living environment dedicated to personal renewal, spiritual growth, and lifelong recovery.</p>
+    <div class="owner-tag">Founder & Owner: Holly Brannon</div>
+    <div class="hero-btn-group">
+      <button onclick="switchTab('apply')" class="btn">Apply For Residence</button>
+      <button onclick="openDonateModal()" class="btn btn-secondary">Financial Donation</button>
+      <button onclick="switchTab('wishlist')" class="btn btn-secondary">Current Wishlist</button>
+    </div>
+  </header>
+
+  <!-- Main View Tabs Switcher -->
+  <div class="tab-navigation-wrapper">
+    <div class="tab-bar">
+      <button class="tab-btn active" id="btn-dashboard" onclick="switchTab('dashboard')">🌸 Home & Mission</button>
+      <button class="tab-btn" id="btn-tour" onclick="switchTab('tour')">🏡 House Tour</button>
+      <button class="tab-btn" id="btn-program" onclick="switchTab('program')">📖 Program Standards</button>
+      <button class="tab-btn" id="btn-testimonials" onclick="switchTab('testimonials')">💬 Testimonials</button>
+      <button class="tab-btn" id="btn-wishlist" onclick="switchTab('wishlist')">🎁 Donation Wishlist</button>
+      <button class="tab-btn" id="btn-apply" onclick="switchTab('apply')">📝 Resident Application</button>
+      <button class="tab-btn" id="btn-contact" onclick="switchTab('contact')">✉️ Contact Us</button>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- TAB 1: HOME & MISSION -->
+    <div id="tab-dashboard" class="tab-content active">
+      <div class="section-title">
+        <h2>Faith, Freedom & Family</h2>
+        <p>Walking alongside every woman with grace, hope, and love as she embraces a transformed life.</p>
+      </div>
+
+      <div class="mv-grid">
+        <div class="mv-card">
+          <h3>Our Mission</h3>
+          <p>Our mission is to provide a safe, supportive, and Christ-centered home where women can heal, grow, and rebuild their lives in recovery. Through faith, accountability, compassion, and community, we empower each resident to overcome addiction, restore her sense of purpose, and develop the spiritual, emotional, and practical foundations needed for lasting sobriety. We are committed to walking alongside every woman with grace, hope, and love as she embraces a transformed life rooted in faith, dignity, and service to others.</p>
+        </div>
+        
+        <div class="mv-card">
+          <h3>Our Vision</h3>
+          <p>Our vision is to see every woman who enters our home experience lasting freedom from addiction through the transforming power of faith, discovering her God-given identity, purpose, and hope. We envision a community where women are restored in spirit, mind, and body, equipped to live healthy, sober, and independent lives, and empowered to strengthen their families, serve their communities, and inspire others through lives marked by faith, resilience, and love.</p>
+        </div>
+      </div>
+
+      <div class="donation-section">
+        <div class="section-title">
+          <h2>Partner With Our Ministry</h2>
+          <p>Your gifts help provide safe shelter, devotional resources, and household essentials for women in recovery.</p>
+        </div>
+
+        <div class="payment-methods">
+          <div class="payment-card">
+            <h3>Cash App</h3>
+            <p><strong>$HopeAndHavenHouses</strong></p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">Instant mobile payment</p>
+            <a href="https://cash.app/$HopeAndHavenHouses" target="_blank" class="pay-link">Donate on Cash App</a>
+          </div>
+
+          <div class="payment-card">
+            <h3>PayPal</h3>
+            <p><strong>Soaringseason24@Gmail.com</strong></p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">Secure online donation</p>
+            <a href="https://www.paypal.com/paypalme/HopeAndHavenHouses" target="_blank" class="pay-link">Donate via PayPal</a>
+          </div>
+
+          <div class="payment-card">
+            <h3>Venmo</h3>
+            <p><strong>@HopeAndHavenHouses</strong></p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">Direct digital contribution</p>
+            <a href="https://venmo.com/HopeAndHavenHouses" target="_blank" class="pay-link">Donate on Venmo</a>
+          </div>
+
+          <div class="payment-card">
+            <h3>Zelle</h3>
+            <p><strong>Soaringseason24@Gmail.com</strong></p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">Direct bank transfer</p>
+            <a href="mailto:Soaringseason24@Gmail.com?subject=Zelle%20Donation%20Info" class="pay-link">Zelle Transfer Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- TAB 2: HOUSE TOUR (ALL 9 PHOTOS INTEGRATED) -->
+    <div id="tab-tour" class="tab-content">
+      <div class="section-title">
+        <h2>A Tour of Hope & Haven</h2>
+        <p>Explore our clean, peaceful, and fully furnished accommodations.</p>
+      </div>
+
+      <section class="carousel-section">
+        <div class="carousel-container">
+          <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+          
+          <!-- Slide 1: Front Exterior -->
+          <div class="carousel-slide">
+            <img src="house-exterior.jpg" alt="Hope and Haven Home Exterior">
+            <div class="carousel-caption">🏡 Home Exterior & Welcoming Front Porch</div>
+          </div>
+
+          <!-- Slide 2: Main Living Room -->
+          <div class="carousel-slide">
+            <img src="living-room.jpg" alt="Main Living Room with Sectional">
+            <div class="carousel-caption">🛋️ Spacious Main Living Area & Fellowship Space</div>
+          </div>
+
+          <!-- Slide 3: Kitchen & Bible Study -->
+          <div class="carousel-slide">
+            <img src="kitchen-study.jpg" alt="Kitchen Island and Bible Study Station">
+            <div class="carousel-caption">📖 Kitchen Island & Dedicated Bible Study Station</div>
+          </div>
+
+          <!-- Slide 4: Resident Bedroom -->
+          <div class="carousel-slide">
+            <img src="resident-bedroom.jpg" alt="Peaceful Resident Bedroom">
+            <div class="carousel-caption">🛏️ Peaceful, Fully Furnished Resident Bedroom</div>
+          </div>
+
+          <!-- Slide 5: Modern Bathroom & Shower -->
+          <div class="carousel-slide">
+            <img src="modern-bathroom.jpg" alt="Clean Bathroom with Floral Shower Curtain">
+            <div class="carousel-caption">🌸 Bright & Fresh Resident Bathroom</div>
+          </div>
+
+          <!-- Slide 6: Second Bathroom Vanity -->
+          <div class="carousel-slide">
+            <img src="second-bathroom.jpg" alt="Second Bathroom Vanity and Mirror">
+            <div class="carousel-caption">🧼 Clean Bathroom Vanity & Storage</div>
+          </div>
+
+          <!-- Slide 7: Bathroom Vanity Detail -->
+          <div class="carousel-slide">
+            <img src="bathroom-detail.jpg" alt="Modern Bathroom Sink and Mirror">
+            <div class="carousel-caption">✨ Modern Vanities & Personal Care Amenities</div>
+          </div>
+
+          <!-- Slide 8: Lower Level Lounge -->
+          <div class="carousel-slide">
+            <img src="lower-lounge.jpg" alt="Lower Level Living Room Lounge">
+            <div class="carousel-caption">📺 Lower Level Community Lounge & Media Room</div>
+          </div>
+
+          <!-- Slide 9: Lower Level Kitchenette & Dining -->
+          <div class="carousel-slide">
+            <img src="lower-dining.jpg" alt="Lower Level Dining Table and Food Prep Area">
+            <div class="carousel-caption">🍽️ Lower Level Dining Area & Secondary Kitchenette</div>
+          </div>
+
+          <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <!-- 9 Navigation Dots -->
+        <div class="dots-container">
+          <span class="dot" onclick="setSlide(0)"></span>
+          <span class="dot" onclick="setSlide(1)"></span>
+          <span class="dot" onclick="setSlide(2)"></span>
+          <span class="dot" onclick="setSlide(3)"></span>
+          <span class="dot" onclick="setSlide(4)"></span>
+          <span class="dot" onclick="setSlide(5)"></span>
+          <span class="dot" onclick="setSlide(6)"></span>
+          <span class="dot" onclick="setSlide(7)"></span>
+          <span class="dot" onclick="setSlide(8)"></span>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- TAB 3: PROGRAM STANDARDS -->
+    <div id="tab-program" class="tab-content">
+      <div class="section-title">
+        <h2>Program Standards & Culture</h2>
+        <p>Built upon Biblical foundation, personal accountability, and community structure.</p>
+      </div>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <h3>🌸 Nightly Curfew</h3>
+          <p>Structure establishes peace. All residents adhere to nightly curfews to foster a stable, safe, and restful home environment.</p>
+        </div>
+
+        <div class="rule-card">
+          <h3>🌸 Bible Class & Worship</h3>
+          <p>Faith is our core foundation. Attendance at weekly house Bible classes and devotions is mandatory for spiritual growth.</p>
+        </div>
+
+        <div class="rule-card">
+          <h3>🌸 Employment Search</h3>
+          <p>Independence creates self-worth. Non-disabled residents must actively seek and maintain full-time gainful employment.</p>
+        </div>
+
+        <div class="rule-card">
+          <h3>🌸 Clean Living Space</h3>
+          <p>Respect for our shared home is essential. Weekly chore rotations and tidy personal living areas are strictly maintained.</p>
+        </div>
+
+        <div class="rule-card">
+          <h3>🌸 Random Drug Screenings</h3>
+          <p>Zero-tolerance safety. Regular screenings safeguard the recovery journey for all women living in the house.</p>
+        </div>
+
+        <div class="rule-card">
+          <h3>🌸 Strict Property Rules</h3>
+          <p>No unauthorized visitors allowed on property at any time to guarantee safety, privacy, and full focus on recovery.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- TAB 4: TESTIMONIALS -->
+    <div id="tab-testimonials" class="tab-content">
+      <div class="section-title">
+        <h2>Stories of New Beginnings</h2>
+        <p>Real stories of transformation, renewal, and hope from past residents.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"Hope and Haven Houses provided the safe space I desperately needed. Holly and the staff helped me rebuild my relationship with Christ."</p>
+          <h4>— Sarah M. (Alumni)</h4>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"The structure, Bible classes, and accountability changed everything for me. Today I am steady, employed, and living free in recovery."</p>
+          <h4>— Rachel K. (Alumni)</h4>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"A supportive, clean, and truly loving home environment where you are held accountable and treated like family."</p>
+          <h4>— Emily T. (Alumni)</h4>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- TAB 5: DONATION WISHLIST (DYNAMICALLY UPDATABLE) -->
+    <div id="tab-wishlist" class="tab-content">
+      <div class="section-title">
+        <h2>Live Donation Wishlist</h2>
+        <p>Our current list of physical needs, updated regularly based on resident and household intake.</p>
+      </div>
+
+      <div class="wishlist-summary-card">
+        <p style="color: var(--dark-pink); font-weight:700; font-size:1.1rem; margin-bottom:0.25rem;">📦 Have items to drop off or donate?</p>
+        <p style="font-size:0.95rem; margin-bottom:0;">Please review our active needs below or submit the scheduling form underneath.</p>
+      </div>
+
+      <div id="publicWishlistContainer" class="wishlist-grid"></div>
+
+      <!-- Item Donation Submission Form -->
+      <section class="form-card">
+        <div class="section-title" style="margin-bottom:1.5rem;">
+          <h2 style="font-size:1.75rem;">Schedule an Item Donation or Drop-off</h2>
+          <p>Please fill out the form below to let us know what items you would like to donate.</p>
+        </div>
+
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="donorName">Your Full Name</label>
+              <input type="text" id="donorName" name="Donor Name" required placeholder="Mary Smith">
+            </div>
+            <div class="form-group">
+              <label for="donorPhone">Phone Number</label>
+              <input type="tel" id="donorPhone" name="Donor Phone" required placeholder="(555) 000-0000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="donorEmail">Email Address</label>
+            <input type="email" id="donorEmail" name="Donor Email" required placeholder="mary@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="donationCategory">Primary Donation Type</label>
+            <select id="donationCategory" name="Donation Category" required>
+              <option value="">-- Select Category --</option>
+              <option value="Clothing & Apparel">Clothing & Apparel</option>
+              <option value="Food & Pantry Items">Food & Pantry Items</option>
+              <option value="Furniture & Appliances">Furniture & Appliances</option>
+              <option value="Bedding & Household Linens">Bedding & Household Linens</option>
+              <option value="Multiple Item Types">Multiple Item Types</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="itemDescription">Description of Item(s)</label>
+            <textarea id="itemDescription" name="Item Description" placeholder="Please list the items, condition, and estimated quantity (e.g., 1 dresser, 2 bags of women's coats size M)." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="deliveryOption">How will the items be provided?</label>
+            <select id="deliveryOption" name="Delivery / Pickup" required>
+              <option value="I can drop items off at the home">I can drop items off at the home</option>
+              <option value="I require assistance/pickup for large furniture">I require assistance/pickup for large furniture</option>
+            </select>
+          </div>
+
+          <button type="submit">Submit Item Donation Notice</button>
+        </form>
+      </section>
+    </div>
+
+
+    <!-- TAB 6: RESIDENT INTAKE APPLICATION -->
+    <div id="tab-apply" class="tab-content">
+      <section class="form-card">
+        <div class="section-title">
+          <h2>Hope and Haven Houses LLC</h2>
+          <p style="font-weight: 700; color: var(--dark-pink); font-size: 1.2rem;">Application / Intake Form</p>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+        <div class="step-indicator" id="stepIndicator">Step 1 of 4: Personal Information</div>
+
+        <form id="intakeForm" action="https://formspree.io/f/YOUR_FORMSPREE_FORM_ID" method="POST">
+
+          <!-- STEP 1: PERSONAL INFORMATION -->
+          <div class="form-step active-step" id="step-1">
+            <h3 class="form-section-title">1. General & Personal Information</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="appDate">Application Date *</label>
+                <input type="date" id="appDate" name="Application Date" required>
+              </div>
+              <div class="form-group">
+                <label for="fullName">Full Legal Name *</label>
+                <input type="text" id="fullName" name="Full Legal Name" required placeholder="Jane Marie Doe">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="returningParticipant">Returning Program Participant? *</label>
+                <select id="returningParticipant" name="Returning Program Participant" required onchange="toggleReasonLeaving(this.value)">
+                  <option value="">-- Select --</option>
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div>
+              <div class="form-group" id="reasonLeavingGroup" style="display:none;">
+                <label for="reasonLeaving">If Yes, Reason for Leaving</label>
+                <input type="text" id="reasonLeaving" name="Reason for Leaving" placeholder="Explain previous exit">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="referredBy">Referred By</label>
+              <input type="text" id="referredBy" name="Referred By" placeholder="Facility, person, or organization">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input type="date" id="dob" name="Date of Birth" required>
+              </div>
+              <div class="form-group">
+                <label for="ssn">Social Security Number *</label>
+                <input type="password" id="ssn" name="Social Security Number" placeholder="XXX-XX-XXXX" required>
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender *</label>
+                <input type="text" id="gender" name="Gender" placeholder="Female" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="Email Address" required placeholder="jane@example.com">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="Phone Number" required placeholder="(555) 000-0000">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="relationshipStatus">Relationship Status</label>
+                <input type="text" id="relationshipStatus" name="Relationship Status" placeholder="Single, Married, Divorced, etc.">
+              </div>
+              <div class="form-group">
+                <label for="numChildren">Number of Children</label>
+                <input type="number" id="numChildren" name="Number of Children" min="0" placeholder="0">
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: RECOVERY, EMPLOYMENT & WEEKLY SCHEDULE -->
+          <div class="form-step" id="step-2">
+            <h3 class="form-section-title">2. Recovery & Weekly Schedule</h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="drugOfChoice">Drug of Choice *</label>
+                <input type="text" id="drugOfChoice" name="Drug of Choice" required placeholder="Primary substance(s)">
+              </div>
+              <div class="form-group">
+                <label for="sobrietyDate">Sobriety Date *</label>
+                <input type="date" id="sobrietyDate" name="Sobriety Date" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="employerSchool">Employer / School</label>
+              <input type="text" id="employerSchool" name="Employer or School" placeholder="Company or school name (if currently attending/employed)">
+            </div>
+
+            <div class="form-group">
+              <label for="emergencyContact">Emergency Contact Name & Phone Number *</label>
+              <input type="text" id="emergencyContact" name="Emergency Contact Name & Number" required placeholder="John Doe - (555) 123-4567">
+            </div>
+
+            <div class="schedule-section">
+              <p class="schedule-title">Weekly Schedule Breakdown</p>
+              <p class="schedule-subtitle">List your commitments (IOP, school, work, community service, meetings, etc.) for each day:</p>
+              
+              <div class="schedule-grid">
+                <div class="day-box">
+                  <label for="schedSun">Sunday</label>
+                  <textarea id="schedSun" name="Schedule: Sunday" placeholder="Times & Activities"></textarea>
+                </div>
+                <div class="day-box">
+                  <label for="schedMon">Monday</label>
+                  <textarea id="schedMon" name="Schedule: Monday" placeholder="Times & Activities"></textarea>
+                </div>
+                <div class="day-box">
+                  <label for="schedTue">Tuesday</label>
+                  <textarea id="schedTue" name="Schedule: Tuesday" placeholder="Times & Activities"></textarea>
+                </div>
+                <div class="day-box">
+                  <label for="schedWed">Wednesday</label>
+                  <textarea id="schedWed" name="Schedule: Wednesday" placeholder="Times & Activities"></textarea>
+                </div>
+                <div class="day-box">
+                  <label for="schedThu">Thursday</label>
+                  <textarea id="schedThu" name="Schedule: Thursday" placeholder="Times & Activities"></textarea>
+                </div>
+                <div class="day-box">
+                  <label for="schedFri">Friday</label>
+                  <textarea id="schedFri" name="Schedule: Friday" placeholder="Times & Activities"></textarea>
+                </div>
+                <div class="day-box">
+                  <label for="schedSat">Saturday</label>
+                  <textarea id="schedSat" name="Schedule: Saturday" placeholder="Times & Activities"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: LEGAL INFORMATION -->
+          <div class="form-step" id="step-3">
+            <h3 class="form-section-title">3. Legal Information</h3>
+
+            <div class="legal-warning-box">
+              ⚠️ <strong>MANDATORY NOTICE:</strong><br>
+              <strong>ARSON, SEX OFFENSES, OR VIOLENT CRIMES:</strong> PLEASE CONTACT OPERATIONS IMMEDIATELY IF YOU HAVE EVER BEEN CHARGED WITH ANY OF THESE OFFENSES.
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="onProbationParole">Currently on Probation or Parole? *</label>
+                <select id="onProbationParole" name="Probation or Parole Status" required onchange="togglePOFields(this.value)">
+                  <option value="">-- Select --</option>
+                  <option value="NO">NO</option>
+                  <option value="YES">YES</option>
+                </select>
+              </div>
+              <div class="form-group" id="poLocationGroup" style="display:none;">
+                <label for="poLocation">IF Yes, Where? (County / State)</label>
+                <input type="text" id="poLocation" name="Probation/Parole Location" placeholder="e.g., Kenton County, KY">
+              </div>
+            </div>
+
+            <div class="form-group" id="poDetailsGroup" style="display:none;">
+              <label for="poNameNumber">Name and Phone Number of Probation Officer</label>
+              <input type="text" id="poNameNumber" name="Probation Officer Name & Phone" placeholder="Officer Name - (555) 000-0000">
+            </div>
+
+            <div class="form-group">
+              <label for="pendingCharges">Pending Charges (List all active or upcoming court cases)</label>
+              <textarea id="pendingCharges" name="Pending Charges" placeholder="List charges or write 'NONE'"></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 4: HOUSE RULES & DIGITAL SIGNATURE -->
+          <div class="form-step" id="step-4">
+            <h3 class="form-section-title">4. Policy Acknowledgement & Signature</h3>
+
+            <div class="policy-alert-box">
+              ⛔ <strong>STRICT HOUSE RULE:</strong><br>
+              <span style="font-size: 1.1rem; font-weight: 800; text-decoration: underline;">NO VISITORS ON PROPERTY!!</span>
+            </div>
+
+            <div class="agreement-box">
+              <p><strong>🌸 Intake & House Agreement</strong></p>
+              <p>By submitting this intake form, I certify that all information provided is true and complete. I understand that falsification of information or failure to abide by house rules (including zero-tolerance policies, curfew, mandatory meetings, and visitor restrictions) may result in immediate dismissal from the program.</p>
+              <div class="checkbox-group">
+                <input type="checkbox" id="agreeIntake" name="Agreed to Intake Policies" value="Yes" required>
+                <label for="agreeIntake">I have read, understood, and agree to abide by all Hope and Haven Houses rules and policies. *</label>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top: 1.5rem;">
+              <div class="form-group">
+                <label for="digitalSig">Applicant Digital Signature (Full Name) *</label>
+                <input type="text" id="digitalSig" name="Digital Signature" required placeholder="Type full legal name">
+              </div>
+              <div class="form-group">
+                <label for="sigDate">Date *</label>
+                <input type="date" id="sigDate" name="Signature Date" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="form-btn-group">
+            <button type="button" class="btn btn-secondary" id="prevBtn" onclick="navigateStep(-1)" style="display:none;">← Previous</button>
+            <button type="button" class="btn" id="nextBtn" onclick="navigateStep(1)">Next Step →</button>
+            <button type="submit" class="btn" id="submitBtn" style="display:none;">Submit Application 🚀</button>
+          </div>
+
+        </form>
+      </section>
+    </div>
+
+
+    <!-- TAB 7: CONTACT US -->
+    <div id="tab-contact" class="tab-content">
+      <div class="section-title">
+        <h2>Get in Touch</h2>
+        <p>Have questions about residency, admissions, volunteering, or donating? Send us a message.</p>
+      </div>
+
+      <section class="contact-section">
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName">Your Name *</label>
+              <input type="text" id="contactName" name="Name" required placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" name="Email" required placeholder="jane@example.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactPhone">Phone Number</label>
+              <input type="tel" id="contactPhone" name="Phone" placeholder="(555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject *</label>
+              <select id="contactSubject" name="Subject" required>
+                <option value="">-- Select Subject --</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Residency & Admissions">Residency & Admissions</option>
+                <option value="Schedule a Tour">Schedule a Tour</option>
+                <option value="Donation Question">Donation Question</option>
+                <option value="Volunteer / Mentorship">Volunteer / Mentorship</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message *</label>
+            <textarea id="contactMessage" name="Message" rows="5" required placeholder="How can our ministry help you?"></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </div>
+
+
+    <!-- TAB 8: ADMIN PORTAL (DISCREET & PIN-PROTECTED) -->
+    <div id="tab-admin" class="tab-content">
+      
+      <!-- Login Gate -->
+      <div id="adminLoginGate" class="admin-card">
+        <span class="admin-icon">🔒</span>
+        <h2 style="font-family: Georgia, serif; color: var(--dark-pink); margin-bottom: 0.5rem;">Administrative Access</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Enter the administrative passcode to manage updates and the live donation wishlist.</p>
+        
+        <form onsubmit="handleAdminAuth(event)">
+          <div class="form-group">
+            <label for="adminPasscode">Passcode</label>
+            <input type="password" id="adminPasscode" class="admin-passcode-input" placeholder="••••" maxlength="8" required>
+            <div id="adminAuthError" class="admin-error-msg">Incorrect passcode. Please try again.</div>
+          </div>
+          <button type="submit" class="btn" style="width: 100%;">Unlock Portal</button>
+        </form>
+      </div>
+
+      <!-- Authenticated Control Center -->
+      <div id="adminDashboardPanel" class="admin-panel">
+        <div class="section-title">
+          <h2>Admin Control Center</h2>
+          <p>Welcome back, Holly. Update your live donation needs, announcements, and house bed status.</p>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+          <button onclick="lockAdminPortal()" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.85rem;">🔒 Lock Portal</button>
+        </div>
+
+        <!-- Wishlist Manager Card -->
+        <div class="admin-action-card" style="margin-bottom: 2rem;">
+          <span class="admin-badge">DONATION WISHLIST MANAGER</span>
+          <h3>Add / Update Needed Items</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Changes made here instantly update the public Donation Wishlist tab.</p>
+
+          <form onsubmit="handleAddWishlistItem(event)" style="margin-bottom: 1.5rem;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="adminItemName">Item Name</label>
+                <input type="text" id="adminItemName" required placeholder="e.g. Twin Sheet Sets (Pink or White)">
+              </div>
+              <div class="form-group">
+                <label for="adminItemCat">Category</label>
+                <select id="adminItemCat" required>
+                  <option value="Clothing & Personal Care">Clothing & Personal Care</option>
+                  <option value="Food & Household Pantry">Food & Household Pantry</option>
+                  <option value="Furniture & Home Goods">Furniture & Home Goods</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="adminItemUrgency">Urgency / Need Level</label>
+                <select id="adminItemUrgency" required>
+                  <option value="High">Urgent Need (High)</option>
+                  <option value="Medium">Regular Need (Medium)</option>
+                  <option value="Standard">Ongoing Need (Standard)</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn" style="width: auto; padding: 0.6rem 1.5rem;">+ Add Item to Live Wishlist</button>
+          </form>
+
+          <!-- Current Items Table -->
+          <h4 style="color: var(--dark-pink); margin-top: 1rem;">Current Active Wishlist Items</h4>
+          <div style="overflow-x: auto;">
+            <table class="admin-list-table">
+              <thead>
+                <tr>
+                  <th>Item Name</th>
+                  <th>Category</th>
+                  <th>Need Level</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="adminWishlistTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Extra Modules -->
+        <div class="admin-panel-grid">
+          <div class="admin-action-card">
+            <span class="admin-badge">COMMUNICATIONS</span>
+            <h3>Post Newsletter / Devotional</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Draft a weekly reflection or announcements for residents and supporters.</p>
+            <button class="btn btn-secondary" style="width:100%;" onclick="alert('Newsletter drafting interface ready for CMS integration.')">Create Post</button>
+          </div>
+
+          <div class="admin-action-card">
+            <span class="admin-badge">RESIDENCY</span>
+            <h3>Bed Availability & Waitlist</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Toggle open beds and manage application review queues.</p>
+            <button class="btn btn-secondary" style="width:100%;" onclick="alert('Bed management ready for backend wiring.')">Manage Availability</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FINANCIAL DONATION MODAL -->
+  <div class="modal-overlay" id="donateModal" onclick="closeDonateModalOnBg(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeDonateModal()">&times;</button>
+      <div class="section-title" style="margin-bottom:1.25rem;">
+        <h2 style="font-size:1.75rem;">Financial Donation Options</h2>
+        <p>Choose your preferred payment method below to support our ministry.</p>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <a href="https://cash.app/$HopeAndHavenHouses" target="_blank" class="btn" style="text-align:center; background:#00D632; color:white;">
+          💚 Donate via Cash App ($HopeAndHavenHouses)
+        </a>
+        <a href="https://www.paypal.com/paypalme/HopeAndHavenHouses" target="_blank" class="btn" style="text-align:center; background:#003087; color:white;">
+          💙 Donate via PayPal
+        </a>
+        <a href="https://venmo.com/HopeAndHavenHouses" target="_blank" class="btn" style="text-align:center; background:#008CFF; color:white;">
+          💙 Donate via Venmo (@HopeAndHavenHouses)
+        </a>
+        <a href="mailto:Soaringseason24@Gmail.com?subject=Zelle%20or%20Check%20Donation" class="btn btn-secondary" style="text-align:center; border:1px solid var(--border-pink);">
+          ✉️ Zelle / Check / Other Inquiries
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer with Hidden Admin Entrance -->
+  <footer>
+    <p><strong>Hope and Haven Houses LLC</strong> &bull; Owner: Holly Brannon</p>
+    <p style="margin-top:0.25rem; font-size:0.9rem;">Contact: <a href="mailto:Soaringseason24@Gmail.com" style="color:var(--dark-pink);">Soaringseason24@Gmail.com</a></p>
+    <a onclick="switchTab('admin')" class="footer-admin-link">🔒 Staff & Admin Portal</a>
+  </footer>
+
+  <!-- JavaScript Controls -->
+  <script>
+    let slideIndex = 0;
+    const ADMIN_PASSCODE = "1234"; // Replace with your desired secret passcode
+
+    // Initial default wishlist data
+    const defaultWishlist = [
+      { id: 1, name: "Gently used or new women's interview clothing & coats", category: "Clothing & Personal Care", urgency: "High" },
+      { id: 2, name: "New socks, undergarments & bras", category: "Clothing & Personal Care", urgency: "High" },
+      { id: 3, name: "Full-size shampoos, conditioners, body washes & deodorant", category: "Clothing & Personal Care", urgency: "Medium" },
+      { id: 4, name: "Coffee, powdered creamer, tea & sugar", category: "Food & Household Pantry", urgency: "High" },
+      { id: 5, name: "Paper towels, toilet paper & 13-gallon trash bags", category: "Food & Household Pantry", urgency: "High" },
+      { id: 6, name: "Laundry detergent pods & dryer sheets", category: "Food & Household Pantry", urgency: "Medium" },
+      { id: 7, name: "Twin-size bed sheet sets & mattress protectors", category: "Furniture & Home Goods", urgency: "High" },
+      { id: 8, name: "Clean dressers & bedside nightstands", category: "Furniture & Home Goods", urgency: "Medium" },
+      { id: 9, name: "Bath towel sets & washcloths", category: "Furniture & Home Goods", urgency: "Standard" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", function() {
+      showSlide(slideIndex);
+      loadWishlist();
+    });
+
+    /* Wishlist Dynamic Engine */
+    function getWishlistData() {
+      const stored = localStorage.getItem('hhh_wishlist_items');
+      return stored ? JSON.parse(stored) : defaultWishlist;
+    }
+
+    function saveWishlistData(data) {
+      localStorage.setItem('hhh_wishlist_items', JSON.stringify(data));
+      loadWishlist();
+    }
+
+    function loadWishlist() {
+      const items = getWishlistData();
+      const categories = [
+        { name: "Clothing & Personal Care", icon: "👗" },
+        { name: "Food & Household Pantry", icon: "🥫" },
+        { name: "Furniture & Home Goods", icon: "🛋️" }
+      ];
+
+      // Render Public Tab
+      const publicContainer = document.getElementById('publicWishlistContainer');
+      publicContainer.innerHTML = '';
+
+      categories.forEach(cat => {
+        const catItems = items.filter(i => i.category === cat.name);
+        const card = document.createElement('div');
+        card.className = 'wishlist-category-card';
+        
+        let listHTML = '';
+        if (catItems.length === 0) {
+          listHTML = '<li style="color:var(--text-muted); font-style:italic;">All current needs in this category are met!</li>';
+        } else {
+          catItems.forEach(item => {
+            const urgencyClass = item.urgency === 'High' ? 'urgency-high' : (item.urgency === 'Medium' ? 'urgency-medium' : 'urgency-standard');
+            listHTML += `
+              <li>
+                <span>${item.name}</span>
+                <span class="urgency-badge ${urgencyClass}">${item.urgency}</span>
+              </li>
+            `;
+          });
+        }
+
+        card.innerHTML = `
+          <h3>${cat.icon} ${cat.name}</h3>
+          <ul class="wishlist-ul">${listHTML}</ul>
+        `;
+        publicContainer.appendChild(card);
+      });
+
+      // Render Admin Table
+      const adminTableBody = document.getElementById('adminWishlistTableBody');
+      if (adminTableBody) {
+        adminTableBody.innerHTML = '';
+        items.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><strong>${item.name}</strong></td>
+            <td>${item.category}</td>
+            <td><span class="urgency-badge ${item.urgency === 'High' ? 'urgency-high' : (item.urgency === 'Medium' ? 'urgency-medium' : 'urgency-standard')}">${item.urgency}</span></td>
+            <td><button class="admin-del-btn" onclick="deleteWishlistItem(${item.id})">Delete</button></td>
+          `;
+          adminTableBody.appendChild(row);
+        });
+      }
+    }
+
+    function handleAddWishlistItem(e) {
+      e.preventDefault();
+      const name = document.getElementById('adminItemName').value.trim();
+      const category = document.getElementById('adminItemCat').value;
+      const urgency = document.getElementById('adminItemUrgency').value;
+
+      if (!name) return;
+
+      const items = getWishlistData();
+      items.push({
+        id: Date.now(),
+        name: name,
+        category: category,
+        urgency: urgency
+      });
+
+      saveWishlistData(items);
+      document.getElementById('adminItemName').value = '';
+    }
+
+    function deleteWishlistItem(id) {
+      let items = getWishlistData();
+      items = items.filter(item => item.id !== id);
+      saveWishlistData(items);
+    }
+
+    /* Carousel Viewer Controller */
+    function showSlide(index) {
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".dot");
+
+      if (index >= slides.length) slideIndex = 0;
+      if (index < 0) slideIndex = slides.length - 1;
+
+      slides.forEach(slide => slide.style.display = "none");
+      dots.forEach(dot => dot.classList.remove("active-dot"));
+
+      slides[slideIndex].style.display = "block";
+      if(dots[slideIndex]) {
+        dots[slideIndex].classList.add("active-dot");
+      }
+    }
+
+    function changeSlide(step) {
+      showSlide(slideIndex += step);
+    }
+
+    function setSlide(index) {
+      showSlide(slideIndex = index);
+    }
+
+    /* Tab Switching Logic */
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      const targetTab = document.getElementById('tab-' + tabName);
+      const targetBtn = document.getElementById('btn-' + tabName);
+
+      if (targetTab) targetTab.classList.add('active');
+      if (targetBtn) targetBtn.classList.add('active');
+
+      window.scrollTo({ top: 400, behavior: 'smooth' });
+    }
+
+    /* Modal Logic */
+    function openDonateModal() {
+      document.getElementById('donateModal').classList.add('active');
+    }
+
+    function closeDonateModal() {
+      document.getElementById('donateModal').classList.remove('active');
+    }
+
+    function closeDonateModalOnBg(e) {
+      if (e.target.id === 'donateModal') closeDonateModal();
+    }
+
+    /* Multi-step Intake Wizard Logic */
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    const stepTitles = [
+      "Step 1 of 4: Personal Information",
+      "Step 2 of 4: Recovery & Weekly Schedule",
+      "Step 3 of 4: Legal Information",
+      "Step 4 of 4: Policy Acknowledgement & Signature"
+    ];
+
+    function navigateStep(direction) {
+      if (direction === 1 && !validateCurrentStep(currentStep)) {
+        alert("Please fill out all required fields marked with (*) before proceeding.");
+        return;
+      }
+
+      document.getElementById(`step-${currentStep}`).classList.remove('active-step');
+      currentStep += direction;
+      document.getElementById(`step-${currentStep}`).classList.add('active-step');
+
+      const progressPercent = (currentStep / totalSteps) * 100;
+      document.getElementById('progressBar').style.width = `${progressPercent}%`;
+      document.getElementById('stepIndicator').innerText = stepTitles[currentStep - 1];
+
+      document.getElementById('prevBtn').style.display = (currentStep === 1) ? 'none' : 'inline-block';
+      document.getElementById('nextBtn').style.display = (currentStep === totalSteps) ? 'none' : 'inline-block';
+      document.getElementById('submitBtn').style.display = (currentStep === totalSteps) ? 'inline-block' : 'none';
+
+      document.querySelector('#tab-apply .form-card').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function validateCurrentStep(step) {
+      const currentStepDiv = document.getElementById(`step-${step}`);
+      const requiredInputs = currentStepDiv.querySelectorAll('[required]');
+      
+      for (let input of requiredInputs) {
+        if (input.type === 'checkbox') {
+          if (!input.checked) return false;
+        } else {
+          if (!input.value.trim()) return false;
+        }
+      }
+      return true;
+    }
+
+    /* Conditional Field Toggles */
+    function toggleReasonLeaving(value) {
+      const reasonGroup = document.getElementById('reasonLeavingGroup');
+      reasonGroup.style.display = (value === 'Yes') ? 'block' : 'none';
+    }
+
+    function togglePOFields(value) {
+      const poLocGroup = document.getElementById('poLocationGroup');
+      const poDetGroup = document.getElementById('poDetailsGroup');
+      const isYes = (value === 'YES');
+      
+      poLocGroup.style.display = isYes ? 'block' : 'none';
+      poDetGroup.style.display = isYes ? 'block' : 'none';
+    }
+
+    /* Custom Passcode Admin Authentication */
+    function handleAdminAuth(event) {
+      event.preventDefault();
+      const enteredCode = document.getElementById('adminPasscode').value;
+      const errorMsg = document.getElementById('adminAuthError');
+
+      if (enteredCode === ADMIN_PASSCODE) {
+        errorMsg.style.display = 'none';
+        document.getElementById('adminLoginGate').style.display = 'none';
+        document.getElementById('adminDashboardPanel').style.display = 'block';
+        document.getElementById('adminPasscode').value = '';
+        loadWishlist();
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    }
+
+    function lockAdminPortal() {
+      document.getElementById('adminDashboardPanel').style.display = 'none';
+      document.getElementById('adminLoginGate').style.display = 'block';
+      document.getElementById('adminPasscode').value = '';
+      document.getElementById('adminAuthError').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
