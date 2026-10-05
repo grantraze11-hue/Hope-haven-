@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Cloudinary Upload Widget SDK (Code-Free Media Uploads) -->
   <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
@@ -64,18 +64,16 @@
     body.admin-edit-active [data-cms] {
       outline: 2.5px dashed var(--vibrant-pink) !important;
       outline-offset: 4px;
-      background-color: rgba(251, 207, 232, 0.35) !important;
+      background-color: rgba(251, 207, 232, 0.45) !important;
       cursor: text !important;
       transition: background-color 0.2s ease;
     }
 
-    body.admin-edit-active [data-cms]:hover {
-      background-color: rgba(251, 207, 232, 0.6) !important;
-    }
-
     /* Bed Availability Banner */
     .status-alert-bar {
-      background: linear-gradient(90deg, #be185d, #9d174d);
+      background: linear-gradient(90deg, #be185d, #9d174d, #db2777);
+      background-size: 200% 200%;
+      animation: bannerGradient 8s ease infinite;
       color: #ffffff;
       text-align: center;
       padding: 0.6rem 1rem;
@@ -86,13 +84,21 @@
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
-      position: relative;
-      z-index: 1001;
+      position: sticky;
+      top: 0;
+      z-index: 1002;
+      box-shadow: 0 2px 10px rgba(157, 23, 77, 0.25);
+    }
+
+    @keyframes bannerGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .pulse-dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       background-color: #4ade80;
       border-radius: 50%;
       animation: pulseGreen 1.8s infinite;
@@ -107,17 +113,18 @@
     /* Navigation */
     nav {
       background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1.5px solid var(--border-pink);
       position: sticky;
-      top: 0;
+      top: 38px;
       z-index: 1000;
-      padding: 0.9rem 2rem;
+      padding: 0.85rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 4px 20px rgba(157, 23, 77, 0.05);
+      transition: all 0.3s ease;
     }
 
     nav .logo {
@@ -133,13 +140,13 @@
     }
 
     nav .logo:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
     nav ul {
       display: flex;
       list-style: none;
-      gap: 0.65rem;
+      gap: 0.45rem;
       align-items: center;
       flex-wrap: wrap;
     }
@@ -149,7 +156,7 @@
       color: #4b5563;
       font-weight: 600;
       font-size: 0.92rem;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
       padding: 0.45rem 0.85rem;
       border-radius: 999px;
@@ -163,22 +170,22 @@
     .nav-donate-btn {
       background: linear-gradient(135deg, var(--medium-pink), var(--dark-pink)) !important;
       color: #ffffff !important;
-      padding: 0.45rem 1.2rem !important;
+      padding: 0.45rem 1.25rem !important;
       border-radius: 999px;
-      font-weight: 600 !important;
+      font-weight: 700 !important;
       box-shadow: 0 4px 14px rgba(190, 24, 93, 0.3);
       transition: transform 0.2s ease, box-shadow 0.2s ease !important;
     }
 
     .nav-donate-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(190, 24, 93, 0.42);
+      box-shadow: 0 6px 18px rgba(190, 24, 93, 0.45);
     }
 
     /* Hero Section */
     header {
       position: relative;
-      background: linear-gradient(135deg, rgba(157, 23, 77, 0.88), rgba(112, 26, 117, 0.88)), 
+      background: linear-gradient(135deg, rgba(157, 23, 77, 0.90), rgba(112, 26, 117, 0.90)), 
                   url('https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       color: #ffffff;
       text-align: center;
@@ -192,14 +199,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
+      pointer-events: auto;
       z-index: 1;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 840px;
+      max-width: 860px;
       margin: 0 auto;
     }
 
@@ -208,7 +215,7 @@
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 1rem;
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
     }
 
     header .subtitle {
@@ -217,6 +224,7 @@
       margin: 0 auto 1.5rem auto;
       color: #fce7f3;
       font-weight: 300;
+      max-width: 760px;
     }
 
     header .owner-tag {
@@ -231,7 +239,7 @@
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 2.25rem;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.32);
       box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
 
@@ -240,6 +248,50 @@
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    /* Dynamic Impact Counter Strip */
+    .impact-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      max-width: 1000px;
+      margin: -2.25rem auto 2.5rem auto;
+      position: relative;
+      z-index: 5;
+      padding: 0 1rem;
+    }
+
+    .impact-stat-card {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .impact-stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--medium-pink);
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* Buttons */
@@ -281,8 +333,8 @@
 
     /* Tab Switcher */
     .tab-navigation-wrapper {
-      max-width: 1100px;
-      margin: 2.5rem auto 0 auto;
+      max-width: 1200px;
+      margin: 1.5rem auto 0 auto;
       padding: 0 1rem;
     }
 
@@ -299,7 +351,7 @@
       background: #ffffff;
       border: 1.5px solid var(--border-pink);
       color: var(--text-muted);
-      padding: 0.75rem 1.35rem;
+      padding: 0.75rem 1.25rem;
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.92rem;
@@ -323,7 +375,7 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1050px;
       margin: 2rem auto 4rem auto;
       padding: 0 1.25rem;
     }
@@ -395,6 +447,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      touch-action: pan-y;
     }
 
     .carousel-slide {
@@ -402,6 +455,13 @@
       width: 100%;
       height: 100%;
       position: absolute;
+      opacity: 0;
+      transition: opacity 0.45s ease-in-out;
+    }
+
+    .carousel-slide.active-slide {
+      display: block;
+      opacity: 1;
     }
 
     .carousel-slide img, .carousel-slide video {
@@ -451,6 +511,23 @@
       transform: translateY(-50%) scale(1.1);
     }
 
+    .carousel-progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 11;
+    }
+
+    .carousel-progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--vibrant-pink);
+      transition: width 0.1s linear;
+    }
+
     .dots-container {
       text-align: center;
       padding-top: 1.25rem;
@@ -492,6 +569,60 @@
 
     .border-top-accent {
       border-top: 5px solid var(--accent-pink);
+    }
+
+    /* Director Letter Presentation */
+    .director-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-pink);
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .director-quote-badge {
+      display: inline-block;
+      background: var(--card-pink);
+      color: var(--dark-pink);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.4px;
+    }
+
+    .director-statement-text {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: #374151;
+      font-family: 'Playfair Display', Georgia, serif;
+      margin-bottom: 2rem;
+      white-space: pre-line;
+    }
+
+    .director-sig-block {
+      border-top: 1px dashed var(--border-pink);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .director-sig-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark-pink);
+    }
+
+    .director-sig-role {
+      font-size: 0.9rem;
+      color: var(--text-muted);
     }
 
     /* Daily Routine Timeline */
@@ -588,26 +719,119 @@
       color: var(--medium-pink);
     }
 
-    /* Readiness Checklist */
-    .readiness-card {
+    /* Interactive Live Readiness Quiz */
+    .readiness-quiz-container {
       background: linear-gradient(135deg, #fff1f2, #fce7f3);
       border: 2px dashed var(--medium-pink);
-      border-radius: var(--radius-md);
-      padding: 1.75rem;
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
       margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-sm);
     }
 
-    .check-item {
+    .readiness-meter-wrapper {
+      margin: 1.25rem 0;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-pink);
+    }
+
+    .readiness-meter-bar {
+      height: 10px;
+      width: 100%;
+      background: #fbcfe8;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .readiness-meter-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-pink), #10b981);
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .quiz-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+    }
+
+    .quiz-check-item {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--dark-pink);
+      gap: 0.75rem;
+      padding: 0.85rem 1.15rem;
+      background: #ffffff;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-pink);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
     }
 
-    /* Wishlist */
+    .quiz-check-item:hover {
+      border-color: var(--accent-pink);
+      background: var(--soft-pink);
+    }
+
+    .quiz-check-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--medium-pink);
+      cursor: pointer;
+    }
+
+    /* Filterable Wishlist Controls */
+    .wishlist-filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border-pink);
+      color: var(--text-muted);
+      padding: 0.45rem 1.15rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--medium-pink);
+      color: #ffffff;
+      border-color: var(--medium-pink);
+    }
+
+    .wishlist-search-input {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto 1.5rem auto;
+      display: block;
+      padding: 0.75rem 1.25rem;
+      border: 1.5px solid var(--border-pink);
+      border-radius: 999px;
+      font-size: 0.92rem;
+      background: #ffffff;
+      box-shadow: var(--shadow-sm);
+      outline: none;
+    }
+
+    .wishlist-search-input:focus {
+      border-color: var(--accent-pink);
+      box-shadow: 0 0 0 3px var(--glow-pink);
+    }
+
+    /* Wishlist Card Visuals */
     .wishlist-summary-card {
       background: linear-gradient(135deg, #fff0f5, #fce7f3);
       border: 1px solid var(--border-pink);
@@ -624,6 +848,11 @@
       border-radius: var(--radius-md);
       padding: 1.75rem;
       box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease;
+    }
+
+    .wishlist-category-card:hover {
+      transform: translateY(-3px);
     }
 
     .wishlist-category-card h3 {
@@ -817,7 +1046,61 @@
       border-left: 4px solid var(--medium-pink);
     }
 
-    /* Admin Portal & CMS Section Styling */
+    /* One-Click Copy Tooltip Button */
+    .copy-chip-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--medium-pink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.35rem;
+      transition: all 0.2s ease;
+    }
+
+    .copy-chip-btn:hover {
+      background: var(--card-pink);
+      transform: scale(1.04);
+    }
+
+    /* Dynamic Toast Alerts */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 10000;
+      pointer-events: none;
+    }
+
+    .dynamic-toast {
+      background: rgba(157, 23, 77, 0.95);
+      color: #ffffff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      animation: toastSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes toastSlideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Admin Portal Styling */
     .admin-card {
       max-width: 500px;
       margin: 1rem auto 3rem auto;
@@ -1162,14 +1445,19 @@
     }
 
     @media (max-width: 768px) {
-      nav { flex-direction: column; gap: 0.75rem; }
+      nav { flex-direction: column; gap: 0.75rem; top: 34px; }
       header h1 { font-size: 2.35rem; }
       .carousel-container { height: 360px; }
       .admin-dock { width: 92%; justify-content: center; border-radius: 16px; bottom: 10px; }
+      .director-container { padding: 2rem 1.5rem; }
+      .impact-strip { grid-template-columns: 1fr 1fr; margin-top: -1.5rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- DYNAMIC TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastBox"></div>
 
   <!-- FIRST-TIME ADMIN ONBOARDING WALKTHROUGH MODAL -->
   <div class="tutorial-overlay" id="adminTutorialOverlay">
@@ -1212,21 +1500,22 @@
   </div>
 
   <!-- Sticky Navigation -->
-  <nav>
+  <nav id="mainNav">
     <a onclick="switchTab('dashboard')" class="logo">🌸 Hope and Haven Houses LLC</a>
     <ul>
-      <li><a onclick="switchTab('dashboard')">Home</a></li>
-      <li><a onclick="switchTab('tour')">House Tour</a></li>
-      <li><a onclick="switchTab('program')">Standards & FAQs</a></li>
-      <li><a onclick="switchTab('testimonials')">Testimonials</a></li>
-      <li><a onclick="switchTab('wishlist')">Wishlist</a></li>
-      <li><a onclick="switchTab('contact')">Contact</a></li>
-      <li><a onclick="switchTab('apply')" style="color: var(--accent-pink); font-weight:700;">Apply Now</a></li>
+      <li><a onclick="switchTab('dashboard')" id="nav-dashboard">Home</a></li>
+      <li><a onclick="switchTab('director')" id="nav-director">From the Director</a></li>
+      <li><a onclick="switchTab('tour')" id="nav-tour">House Tour</a></li>
+      <li><a onclick="switchTab('program')" id="nav-program">Standards & FAQs</a></li>
+      <li><a onclick="switchTab('testimonials')" id="nav-testimonials">Testimonials</a></li>
+      <li><a onclick="switchTab('wishlist')" id="nav-wishlist">Wishlist</a></li>
+      <li><a onclick="switchTab('contact')" id="nav-contact">Contact</a></li>
+      <li><a onclick="switchTab('apply')" id="nav-apply" style="color: var(--accent-pink); font-weight:700;">Apply Now</a></li>
       <li><a onclick="openDonateModal()" class="nav-donate-btn">💸 Donate</a></li>
     </ul>
   </nav>
 
-  <!-- Hero with Falling Petals (Editable CMS) -->
+  <!-- Hero with Interactive Petals (Editable CMS) -->
   <header>
     <canvas id="petalCanvas"></canvas>
     <div class="hero-content">
@@ -1241,10 +1530,31 @@
     </div>
   </header>
 
+  <!-- Dynamic Animated Stat Counters Strip -->
+  <div class="impact-strip">
+    <div class="impact-stat-card">
+      <div class="stat-number" data-counter="100" data-suffix="%">0%</div>
+      <div class="stat-label">Christ-Centered</div>
+    </div>
+    <div class="impact-stat-card">
+      <div class="stat-number" data-counter="9" data-suffix="+ Mos">0</div>
+      <div class="stat-label">Average Clean Stay</div>
+    </div>
+    <div class="impact-stat-card">
+      <div class="stat-number" data-counter="2" data-suffix=" Weekly">0</div>
+      <div class="stat-label">In-House Bible Studies</div>
+    </div>
+    <div class="impact-stat-card">
+      <div class="stat-number" data-counter="24" data-suffix="/7">0</div>
+      <div class="stat-label">Safe Sober Sisterhood</div>
+    </div>
+  </div>
+
   <!-- Main View Tabs Switcher -->
   <div class="tab-navigation-wrapper">
     <div class="tab-bar">
       <button class="tab-btn active" id="btn-dashboard" onclick="switchTab('dashboard')">🌸 Home & Mission</button>
+      <button class="tab-btn" id="btn-director" onclick="switchTab('director')">🕊️ From the Director</button>
       <button class="tab-btn" id="btn-tour" onclick="switchTab('tour')">🏡 House Tour</button>
       <button class="tab-btn" id="btn-program" onclick="switchTab('program')">📖 Standards & Daily Rhythm</button>
       <button class="tab-btn" id="btn-testimonials" onclick="switchTab('testimonials')">💬 Testimonials</button>
@@ -1275,50 +1585,107 @@
         </div>
       </div>
 
-      <!-- Quick Readiness Check Before Applying -->
-      <div class="readiness-card">
-        <h3 style="color: var(--dark-pink); margin-bottom: 0.5rem;" data-cms="readiness_title">🌸 Are You or Your Loved One Ready for Hope & Haven?</h3>
-        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #4b5563;" data-cms="readiness_desc">Our home is built for women who are eager to commit to active recovery and faith-based community living:</p>
-        <div class="check-item" data-cms="readiness_1">✓ Completed medical detox or inpatient treatment (or currently maintaining sobriety).</div>
-        <div class="check-item" data-cms="readiness_2">✓ Willing to submit to random, observed drug and alcohol screenings.</div>
-        <div class="check-item" data-cms="readiness_3">✓ Committed to attending house devotions, 12-step/recovery meetings, and Sunday services.</div>
-        <div class="check-item" data-cms="readiness_4">✓ Ready to obtain full-time employment or pursue approved education/outpatient therapy.</div>
-        <div style="margin-top: 1.25rem;">
+      <!-- DYNAMIC READINESS QUIZ & COMMITMENT CHECK -->
+      <div class="readiness-quiz-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h3 style="color: var(--dark-pink);" data-cms="readiness_title">🌸 Resident Readiness & Commitment Self-Check</h3>
+          <span id="readinessScoreBadge" class="urgency-badge urgency-standard" style="font-size: 0.85rem; padding: 0.35rem 0.85rem;">0 of 4 Confirmed</span>
+        </div>
+        <p style="font-size: 0.95rem; margin-top: 0.4rem; color: #4b5563;">Check off each standard that applies to you or your loved one to see if you are prepared for immediate intake:</p>
+
+        <div class="readiness-meter-wrapper">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: var(--dark-pink);">
+            <span>Program Readiness Meter</span>
+            <span id="readinessPercentage">0%</span>
+          </div>
+          <div class="readiness-meter-bar">
+            <div class="readiness-meter-fill" id="readinessFill"></div>
+          </div>
+        </div>
+
+        <div class="quiz-options-list">
+          <label class="quiz-check-item">
+            <input type="checkbox" onchange="updateReadinessScore()">
+            <span>Completed medical detox / inpatient treatment (or currently maintaining stable sobriety).</span>
+          </label>
+          <label class="quiz-check-item">
+            <input type="checkbox" onchange="updateReadinessScore()">
+            <span>Willing and ready to submit to random, observed drug and alcohol screenings.</span>
+          </label>
+          <label class="quiz-check-item">
+            <input type="checkbox" onchange="updateReadinessScore()">
+            <span>Committed to participating in house devotions, 12-step/recovery meetings, and Sunday services.</span>
+          </label>
+          <label class="quiz-check-item">
+            <input type="checkbox" onchange="updateReadinessScore()">
+            <span>Prepared to seek full-time employment, clinical IOP, or volunteer service hours.</span>
+          </label>
+        </div>
+
+        <div id="readinessFeedback" style="margin-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <span style="font-size: 0.92rem; font-weight: 600; color: var(--text-muted);" id="readinessHint">Select all commitments to confirm program qualification.</span>
           <button class="btn" onclick="switchTab('apply')">Proceed to Official Application →</button>
         </div>
       </div>
 
-      <!-- Financial Giving Methods -->
+      <!-- Financial Giving Methods (Venmo & Cash App Only) -->
       <div class="card" style="margin-bottom: 2.5rem;">
         <div class="section-title" style="margin-bottom: 1.5rem;">
           <h2 data-cms="donate_heading">Support Our Ministry Financially</h2>
           <p data-cms="donate_subheading">Monetary gifts directly support bed scholarships, food staples, utilities, and recovery materials.</p>
         </div>
 
-        <div class="grid-3" style="margin-bottom: 0;">
-          <div class="card" style="text-align: center; background: var(--soft-pink); padding: 1.5rem;">
-            <h3 style="color: var(--dark-pink); font-size: 1.2rem;">Cash App</h3>
-            <p style="font-weight:700; margin: 0.35rem 0;" data-cms="cashapp_handle">$HopeAndHavenHouses</p>
-            <a href="https://cash.app/$HopeAndHavenHouses" target="_blank" class="btn" style="padding: 0.45rem 1.1rem; font-size: 0.85rem;">Donate on Cash App</a>
+        <div class="grid-2" style="max-width: 760px; margin: 0 auto;">
+          <div class="card" style="text-align: center; background: var(--soft-pink); padding: 1.75rem;">
+            <h3 style="color: var(--dark-pink); font-size: 1.3rem;">💙 Venmo</h3>
+            <p style="font-weight:700; margin: 0.5rem 0;" data-cms="venmo_handle">Hope and Haven Houses</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Directly support resident expenses and upkeep</p>
+            <a id="homeVenmoLink" href="https://venmo.com/code?user_id=4696848979724316778&created=1791156727.710198&printed=1" target="_blank" class="btn" style="padding: 0.55rem 1.4rem; font-size: 0.9rem; background:#008CFF;">Give on Venmo</a>
           </div>
 
-          <div class="card" style="text-align: center; background: var(--soft-pink); padding: 1.5rem;">
-            <h3 style="color: var(--dark-pink); font-size: 1.2rem;">PayPal</h3>
-            <p style="font-size:0.85rem; word-break:break-all; font-weight: 600; margin: 0.35rem 0;" data-cms="paypal_email">Soaringseason24@Gmail.com</p>
-            <a href="https://www.paypal.com/paypalme/HopeAndHavenHouses" target="_blank" class="btn" style="padding: 0.45rem 1.1rem; font-size: 0.85rem;">Donate via PayPal</a>
-          </div>
-
-          <div class="card" style="text-align: center; background: var(--soft-pink); padding: 1.5rem;">
-            <h3 style="color: var(--dark-pink); font-size: 1.2rem;">Venmo</h3>
-            <p style="font-weight:700; margin: 0.35rem 0;" data-cms="venmo_handle">@HopeAndHavenHouses</p>
-            <a href="https://venmo.com/HopeAndHavenHouses" target="_blank" class="btn" style="padding: 0.45rem 1.1rem; font-size: 0.85rem;">Donate on Venmo</a>
+          <div class="card" style="text-align: center; background: var(--soft-pink); padding: 1.75rem;">
+            <h3 style="color: var(--dark-pink); font-size: 1.3rem;">💚 Cash App</h3>
+            <p style="font-weight:700; margin: 0.5rem 0;" data-cms="cashapp_handle">$HopeAndHavenHouses</p>
+            <button class="copy-chip-btn" onclick="copyToClipboard('$HopeAndHavenHouses', 'Cash App tag')">📋 Copy Cashtag</button>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.75rem 0;">Fast, secure giving directly through Cash App</p>
+            <a href="https://cash.app/$HopeAndHavenHouses" target="_blank" class="btn" style="padding: 0.55rem 1.4rem; font-size: 0.9rem; background:#00D632;">Give on Cash App</a>
           </div>
         </div>
       </div>
     </div>
 
 
-    <!-- TAB 2: HOUSE TOUR (PHOTOS & VIDEOS) -->
+    <!-- TAB 2: FROM THE DIRECTOR (NEW DYNAMIC PAGE) -->
+    <div id="tab-director" class="tab-content">
+      <div class="section-title">
+        <h2 data-cms="director_heading">From the Director</h2>
+        <p data-cms="director_subheading">A heartfelt personal message from Founder and Director Holly Brannon.</p>
+      </div>
+
+      <div class="director-container">
+        <span class="director-quote-badge">🕊️ A Heart for Restoration & Ministry</span>
+        
+        <div class="director-statement-text" data-cms="director_statement">
+My desire to help women in addiction began in 2018 when my older sister died of a drug overdose. She had struggled with addiction for many years. I wanted to help her, but didn’t know how. I prayed and talked to her about how I had overcome the same kind of things through my faith in Jesus Christ to deliver us. She started her journey of deeper faith that year. 
+
+I opened my first Hope and Haven House, August 1, 2025 in Elsmere, Kentucky. It is a safe place for women to recover from addiction and move toward a beautiful life of sobriety.
+        </div>
+
+        <div class="director-sig-block">
+          <div>
+            <div class="director-sig-name" data-cms="director_sig_name">Holly Brannon</div>
+            <div class="director-sig-role" data-cms="director_sig_role">Founder & Director, Hope and Haven Houses LLC</div>
+            <div style="font-size: 0.82rem; color: var(--dark-pink); font-weight: 600; margin-top: 0.2rem;">Founded August 1, 2025 &bull; Elsmere, Kentucky</div>
+          </div>
+          <div>
+            <button onclick="switchTab('apply')" class="btn">Apply for Residency →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- TAB 3: HOUSE TOUR (AUTOPLAY & SWIPE-READY) -->
     <div id="tab-tour" class="tab-content">
       <div class="section-title">
         <h2 data-cms="tour_heading">A Look Inside Hope & Haven</h2>
@@ -1326,16 +1693,22 @@
       </div>
 
       <section class="carousel-section">
-        <div class="carousel-container" id="tourCarouselContainer">
+        <div class="carousel-container" id="tourCarouselContainer" onmouseenter="pauseTourAutoplay()" onmouseleave="startTourAutoplay()">
           <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
           <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+          <div class="carousel-progress-bar">
+            <div class="carousel-progress-fill" id="slideProgress"></div>
+          </div>
         </div>
         <div class="dots-container" id="carouselDots"></div>
+        <div style="text-align: center; margin-top: 0.75rem;">
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">💡 Slides rotate automatically. Hover or touch to pause.</span>
+        </div>
       </section>
     </div>
 
 
-    <!-- TAB 3: STANDARDS, TIMELINE & FAQS (Editable CMS) -->
+    <!-- TAB 4: STANDARDS, TIMELINE & FAQS (Editable CMS) -->
     <div id="tab-program" class="tab-content">
       <div class="section-title">
         <h2 data-cms="program_heading">Standards & Daily Routine</h2>
@@ -1360,7 +1733,7 @@
     </div>
 
 
-    <!-- TAB 4: TESTIMONIALS & STORY SUBMISSION -->
+    <!-- TAB 5: TESTIMONIALS & STORY SUBMISSION -->
     <div id="tab-testimonials" class="tab-content">
       <div class="section-title">
         <h2 data-cms="testimonials_heading">Stories of New Beginnings</h2>
@@ -1401,7 +1774,7 @@
     </div>
 
 
-    <!-- TAB 5: DYNAMIC WISHLIST & PHYSICAL DONATIONS -->
+    <!-- TAB 6: DYNAMIC FILTERABLE WISHLIST -->
     <div id="tab-wishlist" class="tab-content">
       <div class="section-title">
         <h2 data-cms="wishlist_heading">Live Donation Wishlist</h2>
@@ -1411,6 +1784,16 @@
       <div class="wishlist-summary-card">
         <h3 style="color: var(--dark-pink); margin-bottom: 0.35rem;" data-cms="wishlist_card_title">📦 Current Needs & Supply Drop-offs</h3>
         <p style="font-size: 0.95rem; color: var(--text-muted);" data-cms="wishlist_card_desc">Have household items to donate? Review our active list below or schedule a drop-off underneath.</p>
+      </div>
+
+      <!-- Live Search & Category Filter Controls -->
+      <input type="text" id="wishlistSearch" class="wishlist-search-input" placeholder="🔍 Search needed supplies (e.g. sheets, shampoo, coffee)..." oninput="filterWishlistItems()">
+
+      <div class="wishlist-filter-bar">
+        <button class="filter-btn active" onclick="setWishlistFilter('All', this)">All Categories</button>
+        <button class="filter-btn" onclick="setWishlistFilter('Clothing & Personal Care', this)">👗 Clothing & Toiletries</button>
+        <button class="filter-btn" onclick="setWishlistFilter('Food & Household Pantry', this)">🥫 Pantry & Food</button>
+        <button class="filter-btn" onclick="setWishlistFilter('Furniture & Home Goods', this)">🛋️ Bedding & Furniture</button>
       </div>
 
       <div id="publicWishlistContainer" class="grid-3"></div>
@@ -1470,7 +1853,7 @@
     </div>
 
 
-    <!-- TAB 6: MULTI-STEP INTAKE APPLICATION -->
+    <!-- TAB 7: MULTI-STEP INTAKE APPLICATION -->
     <div id="tab-apply" class="tab-content">
       <section class="form-card">
         <div class="section-title">
@@ -1661,7 +2044,7 @@
     </div>
 
 
-    <!-- TAB 7: CONTACT US (Editable CMS) -->
+    <!-- TAB 8: CONTACT US (Editable CMS) -->
     <div id="tab-contact" class="tab-content">
       <div class="section-title">
         <h2 data-cms="contact_heading">Get in Touch</h2>
@@ -1672,13 +2055,14 @@
         <div class="card" style="background: var(--soft-pink); text-align: center;">
           <h3 style="color: var(--dark-pink); margin-bottom: 0.5rem;">Direct Leadership Email</h3>
           <p style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;" data-cms="contact_email">Hopeandhavenhouses@gmail.com</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;" data-cms="contact_response_time">Founder: Holly Brannon &bull; Replies within 24 hours</p>
+          <button class="copy-chip-btn" onclick="copyToClipboard('Hopeandhavenhouses@gmail.com', 'Director email')">📋 Copy Email</button>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;" data-cms="contact_response_time">Founder: Holly Brannon &bull; Replies within 24 hours</p>
         </div>
 
         <div class="card" style="background: var(--soft-pink); text-align: center;">
           <h3 style="color: var(--dark-pink); margin-bottom: 0.5rem;">House Location Notice</h3>
-          <p style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;" data-cms="contact_location">Northern Kentucky Residence</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Exact address provided upon approved intake interview</p>
+          <p style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;" data-cms="contact_location">Elsmere, Kentucky Residence</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Exact address provided upon approved intake interview</p>
         </div>
       </div>
 
@@ -1722,7 +2106,7 @@
     </div>
 
 
-    <!-- TAB 8: ADMIN CONTROL CENTER (PAGE-BY-PAGE CMS + EMAIL/PASSWORD LOGIN) -->
+    <!-- TAB 9: ADMIN CONTROL CENTER -->
     <div id="tab-admin" class="tab-content">
       
       <!-- Login Gate with Email & Password -->
@@ -1764,19 +2148,20 @@
         <!-- Sub Tabs to Edit Each Page Individually -->
         <div class="admin-sub-tabs">
           <button class="admin-sub-btn active" onclick="switchAdminCmsPage('cms-home', this)">Page 1: Home & Hero</button>
-          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-tour', this)">Page 2: Tour & Media</button>
-          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-program', this)">Page 3: Standards, Schedule & FAQs</button>
-          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-testimonials', this)">Page 4: Testimonials</button>
-          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-wishlist', this)">Page 5: Wishlist</button>
-          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-contact', this)">Page 6: Contact & Bed Status</button>
+          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-director', this)">Page 2: From the Director</button>
+          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-tour', this)">Page 3: Tour & Media</button>
+          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-program', this)">Page 4: Standards & FAQs</button>
+          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-testimonials', this)">Page 5: Testimonials</button>
+          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-wishlist', this)">Page 6: Wishlist</button>
+          <button class="admin-sub-btn" onclick="switchAdminCmsPage('cms-contact', this)">Page 7: Contact & Bed Status</button>
         </div>
 
         <!-- CMS PAGE 1: HOME & HERO -->
         <div id="cms-home" class="admin-cms-page active">
           <div class="admin-action-card">
             <span class="admin-badge">PAGE 1 &bull; HOME CONTENT</span>
-            <h3>Edit Hero, Mission & Vision Statements</h3>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.25rem;">Type your changes below and click Save Page 1 Content.</p>
+            <h3>Edit Hero, Mission & Financial Handles</h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.25rem;">Type your changes below and click Save.</p>
 
             <form onsubmit="handleCmsFormSave(event)">
               <div class="form-row">
@@ -1822,12 +2207,12 @@
                   <input type="text" data-cms-input="cashapp_handle">
                 </div>
                 <div class="form-group">
-                  <label>PayPal Email</label>
-                  <input type="text" data-cms-input="paypal_email">
+                  <label>Venmo Title / Handle</label>
+                  <input type="text" data-cms-input="venmo_handle">
                 </div>
                 <div class="form-group">
-                  <label>Venmo Handle</label>
-                  <input type="text" data-cms-input="venmo_handle">
+                  <label>Venmo Direct Payment URL</label>
+                  <input type="text" data-cms-input="venmo_link">
                 </div>
               </div>
 
@@ -1836,10 +2221,50 @@
           </div>
         </div>
 
-        <!-- CMS PAGE 2: TOUR & MEDIA -->
+        <!-- CMS PAGE 2: FROM THE DIRECTOR -->
+        <div id="cms-director" class="admin-cms-page">
+          <div class="admin-action-card">
+            <span class="admin-badge">PAGE 2 &bull; FROM THE DIRECTOR</span>
+            <h3>Edit Director's Personal Statement</h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.25rem;">Update Holly's story, background, and vision for the home.</p>
+
+            <form onsubmit="handleCmsFormSave(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Page Heading</label>
+                  <input type="text" data-cms-input="director_heading">
+                </div>
+                <div class="form-group">
+                  <label>Page Subheading</label>
+                  <input type="text" data-cms-input="director_subheading">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Director's Personal Message / Testimony</label>
+                <textarea data-cms-input="director_statement" rows="8"></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Signature Name</label>
+                  <input type="text" data-cms-input="director_sig_name">
+                </div>
+                <div class="form-group">
+                  <label>Signature Title</label>
+                  <input type="text" data-cms-input="director_sig_role">
+                </div>
+              </div>
+
+              <button type="submit" class="btn">💾 Save Director Statement</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- CMS PAGE 3: TOUR & MEDIA -->
         <div id="cms-tour" class="admin-cms-page">
           <div class="admin-action-card">
-            <span class="admin-badge">PAGE 2 &bull; TOUR MEDIA MANAGER</span>
+            <span class="admin-badge">PAGE 3 &bull; TOUR MEDIA MANAGER</span>
             <h3>Add Photos & Video Tours</h3>
             <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.25rem;">
               Upload walkthrough clips or house pictures directly from your device, or paste direct URLs.
@@ -1883,11 +2308,11 @@
           </div>
         </div>
 
-        <!-- CMS PAGE 3: STANDARDS, TIMELINE & FAQS -->
+        <!-- CMS PAGE 4: STANDARDS, TIMELINE & FAQS -->
         <div id="cms-program" class="admin-cms-page">
           <!-- Timeline Manager -->
           <div class="admin-action-card">
-            <span class="admin-badge">PAGE 3 &bull; DAILY SCHEDULE TIMELINE</span>
+            <span class="admin-badge">PAGE 4 &bull; DAILY SCHEDULE TIMELINE</span>
             <h3>Add or Remove Daily Routine Milestones</h3>
             <form onsubmit="handleAddTimelineItem(event)" style="margin-bottom: 1.5rem;">
               <div class="form-row">
@@ -1925,7 +2350,7 @@
 
           <!-- FAQ Manager -->
           <div class="admin-action-card">
-            <span class="admin-badge">PAGE 3 &bull; FAQ ACCORDION MANAGER</span>
+            <span class="admin-badge">PAGE 4 &bull; FAQ ACCORDION MANAGER</span>
             <h3>Add or Remove Frequently Asked Questions</h3>
             <form onsubmit="handleAddFaqItem(event)" style="margin-bottom: 1.5rem;">
               <div class="form-group">
@@ -1955,21 +2380,21 @@
           </div>
         </div>
 
-        <!-- CMS PAGE 4: TESTIMONIALS -->
+        <!-- CMS PAGE 5: TESTIMONIALS -->
         <div id="cms-testimonials" class="admin-cms-page">
           <div class="admin-action-card">
-            <span class="admin-badge">PAGE 4 &bull; TESTIMONIALS MANAGER</span>
-            <h3>Add, Edit or Remove Alumni Stories</h3>
+            <span class="admin-badge">PAGE 5 &bull; TESTIMONIALS MANAGER</span>
+            <h3>Add, Edit or Remove Resident Stories</h3>
             <form onsubmit="handleAddTestimonial(event)" style="margin-bottom: 1.5rem;">
               <div class="form-row">
                 <div class="form-group">
-                  <label>Author Attribution (e.g. Sarah M. (Alumni))</label>
-                  <input type="text" id="adminTestimonialAuthor" required placeholder="— Name (Alumni)">
+                  <label>Author Attribution (e.g. — Jennifer Varnum)</label>
+                  <input type="text" id="adminTestimonialAuthor" required placeholder="— Name">
                 </div>
               </div>
               <div class="form-group">
                 <label>Quote / Story Text</label>
-                <textarea id="adminTestimonialQuote" rows="3" required placeholder="Quote from graduate or family member..."></textarea>
+                <textarea id="adminTestimonialQuote" rows="4" required placeholder="Quote from resident or graduate..."></textarea>
               </div>
               <button type="submit" class="btn" style="padding: 0.6rem 1.4rem;">+ Add Testimonial Card</button>
             </form>
@@ -1990,10 +2415,10 @@
           </div>
         </div>
 
-        <!-- CMS PAGE 5: WISHLIST -->
+        <!-- CMS PAGE 6: WISHLIST -->
         <div id="cms-wishlist" class="admin-cms-page">
           <div class="admin-action-card">
-            <span class="admin-badge">PAGE 5 &bull; DONATION WISHLIST</span>
+            <span class="admin-badge">PAGE 6 &bull; DONATION WISHLIST</span>
             <h3>Add Items to Needed Supplies</h3>
             <form onsubmit="handleAddWishlistItem(event)" style="margin-bottom: 1.5rem;">
               <div class="form-row">
@@ -2038,10 +2463,10 @@
           </div>
         </div>
 
-        <!-- CMS PAGE 6: CONTACT & BED STATUS -->
+        <!-- CMS PAGE 7: CONTACT & BED STATUS -->
         <div id="cms-contact" class="admin-cms-page">
           <div class="admin-action-card">
-            <span class="admin-badge">PAGE 6 &bull; BED OCCUPANCY & CONTACT INFO</span>
+            <span class="admin-badge">PAGE 7 &bull; BED OCCUPANCY & CONTACT INFO</span>
             <h3>Update Live Bed Banner & Contact Information</h3>
 
             <div style="margin-bottom: 1.5rem; background: var(--soft-pink); padding: 1.25rem; border-radius: var(--radius-sm);">
@@ -2080,27 +2505,24 @@
 
   </main>
 
-  <!-- Financial Donation Modal -->
+  <!-- Financial Donation Modal (Venmo & Cash App) -->
   <div class="modal-overlay" id="donateModal" onclick="closeDonateModalOnBg(event)">
     <div class="modal-content">
       <button class="modal-close" onclick="closeDonateModal()">&times;</button>
       <div class="section-title" style="margin-bottom: 1.5rem;">
         <h2 style="font-size: 1.8rem;">Give Online</h2>
-        <p>Choose your preferred giving method to support our women in recovery.</p>
+        <p>Choose your preferred giving method to bless our home and women in recovery.</p>
       </div>
 
       <div style="display:flex; flex-direction:column; gap:0.9rem;">
+        <a id="modalVenmoLink" href="https://venmo.com/code?user_id=4696848979724316778&created=1791156727.710198&printed=1" target="_blank" class="btn" style="background:#008CFF;">
+          💙 Venmo (<span data-cms="venmo_handle">Hope and Haven Houses</span>)
+        </a>
         <a href="https://cash.app/$HopeAndHavenHouses" target="_blank" class="btn" style="background:#00D632;">
           💚 Cash App (<span data-cms="cashapp_handle">$HopeAndHavenHouses</span>)
         </a>
-        <a href="https://www.paypal.com/paypalme/HopeAndHavenHouses" target="_blank" class="btn" style="background:#003087;">
-          💙 PayPal Direct
-        </a>
-        <a href="https://venmo.com/HopeAndHavenHouses" target="_blank" class="btn" style="background:#008CFF;">
-          💙 Venmo (<span data-cms="venmo_handle">@HopeAndHavenHouses</span>)
-        </a>
-        <a href="mailto:Soaringseason24@Gmail.com?subject=Zelle%20or%20Check%20Donation" class="btn btn-secondary" style="border:1px solid var(--border-pink);">
-          ✉️ Zelle / Check Instructions
+        <a href="mailto:Hopeandhavenhouses@gmail.com?subject=Check%20or%20Direct%20Giving" class="btn btn-secondary" style="border:1px solid var(--border-pink);">
+          ✉️ Inquire for Check / Direct Giving
         </a>
       </div>
     </div>
@@ -2127,6 +2549,8 @@
     let slideIndex = 0;
     let liveEditActive = false;
     let currentTutorialStep = 0;
+    let tourAutoplayTimer = null;
+    let activeWishlistFilter = "All";
 
     /* ==========================================================
        CMS DEFAULT DATA
@@ -2141,17 +2565,17 @@
       mission_text: "Our mission is to provide a safe, supportive, and Christ-centered home where women can heal, grow, and rebuild their lives in recovery. Through faith, accountability, compassion, and community, we empower each resident to overcome addiction, restore her sense of purpose, and develop the spiritual, emotional, and practical foundations needed for lasting sobriety.",
       vision_title: "Our Vision",
       vision_text: "Our vision is to see every woman who enters our home experience lasting freedom from addiction through the transforming power of faith, discovering her God-given identity, purpose, and hope. We envision a community where women are restored in spirit, mind, and body, equipped to live healthy, sober, and independent lives.",
-      readiness_title: "🌸 Are You or Your Loved One Ready for Hope & Haven?",
-      readiness_desc: "Our home is built for women who are eager to commit to active recovery and faith-based community living:",
-      readiness_1: "✓ Completed medical detox or inpatient treatment (or currently maintaining sobriety).",
-      readiness_2: "✓ Willing to submit to random, observed drug and alcohol screenings.",
-      readiness_3: "✓ Committed to attending house devotions, 12-step/recovery meetings, and Sunday services.",
-      readiness_4: "✓ Ready to obtain full-time employment or pursue approved education/outpatient therapy.",
+      director_heading: "From the Director",
+      director_subheading: "A heartfelt personal message from Founder and Director Holly Brannon.",
+      director_statement: "My desire to help women in addiction began in 2018 when my older sister died of a drug overdose. She had struggled with addiction for many years. I wanted to help her, but didn’t know how. I prayed and talked to her about how I had overcome the same kind of things through my faith in Jesus Christ to deliver us. She started her journey of deeper faith that year. \n\nI opened my first Hope and Haven House, August 1, 2025 in Elsmere, Kentucky. It is a safe place for women to recover from addiction and move toward a beautiful life of sobriety.",
+      director_sig_name: "Holly Brannon",
+      director_sig_role: "Founder & Director, Hope and Haven Houses LLC",
+      readiness_title: "🌸 Resident Readiness & Commitment Self-Check",
       donate_heading: "Support Our Ministry Financially",
       donate_subheading: "Monetary gifts directly support bed scholarships, food staples, utilities, and recovery materials.",
       cashapp_handle: "$HopeAndHavenHouses",
-      paypal_email: "Soaringseason24@Gmail.com",
-      venmo_handle: "@HopeAndHavenHouses",
+      venmo_handle: "Hope and Haven Houses",
+      venmo_link: "https://venmo.com/code?user_id=4696848979724316778&created=1791156727.710198&printed=1",
       tour_heading: "A Look Inside Hope & Haven",
       tour_subheading: "Explore our clean, comfortable, and fully furnished accommodations created for peace and recovery.",
       program_heading: "Standards & Daily Routine",
@@ -2170,7 +2594,7 @@
       contact_subheading: "Have questions about admissions, tours, or partnership? Send us a message below.",
       contact_email: "Hopeandhavenhouses@gmail.com",
       contact_response_time: "Founder: Holly Brannon • Replies within 24 hours",
-      contact_location: "Northern Kentucky Residence",
+      contact_location: "Elsmere, Kentucky Residence",
       bed_status: "Now Accepting Applications • 2 Beds Currently Available"
     };
 
@@ -2190,9 +2614,21 @@
     ];
 
     const defaultTestimonials = [
-      { id: 1, author: "— Sarah M. (Alumni)", quote: "Hope and Haven Houses gave me the peaceful, structured space I needed when I had nowhere else to turn. Holly and the sisters helped me rediscover my faith and my worth." },
-      { id: 2, author: "— Rachel K. (Alumni)", quote: "The Bible studies, nightly curfew, and employment encouragement kept me grounded. Today I have full-time work, my own savings, and 14 months of clean time." },
-      { id: 3, author: "— Emily T. (Alumni)", quote: "It's not just a sober house; it’s a family. You are loved, held accountable, and given the exact tools needed to thrive after rehab." }
+      { 
+        id: 1, 
+        author: "— A.T", 
+        quote: "To future hope and haven residents, I stayed here 9 months and called it home! It helped me get closer to God and kept me pushing through with my sobriety! The ladies and Holly became like family to me. If you are looking to stay sober and gain a new family look no further. You have found the right place." 
+      },
+      { 
+        id: 2, 
+        author: "— Jennifer Varnum", 
+        quote: "When I had nowhere to go, Sister Holly opened her heart and took me into Hope and Haven House, giving me a place to stay when I desperately needed somewhere to belong. What started as simply having a roof over my head became so much more than that—it became a place where God began doing a deeper work in my life. Through the love, patience, accountability, and spiritual encouragement I have experienced there, my faith has grown stronger and my relationship with Jesus has become deeper. Hope and Haven has also given me a sense of stability and support that has helped me work through things that have been difficult for me mentally and emotionally. I am incredibly grateful that Sister Holly saw me when I needed someone to see me, welcomed me when I needed somewhere to belong, and allowed God to use Hope and Haven as part of my healing journey. I know this season of my life has not happened by accident; I believe God placed me here for a reason, and I am thankful for the ways He has been changing my heart, strengthening my faith, and helping me become the person He is calling me to be." 
+      },
+      { 
+        id: 3, 
+        author: "— Jesika Jellison", 
+        quote: "Hi, my name is Jesika, and for as long as I can remember, I have struggled with addiction, mental instability, insomnia, and my faith in God. But since coming to Hope and Haven House, my life has completely changed. I have been in recovery for nine months, and my faith in God is now unbreakable. I am no longer taking medication for anxiety or sleep aids, and I have experienced a peace and strength that I never thought was possible. I have an overwhelming amount of gratitude for Holly, Hope and Haven House, New Life Church, and most importantly, my relationship with God. None of the blessings in my life would be possible without them. I also owe an immense amount of gratitude to the women I share this home with. This truly is a house filled with love, and you can feel it the moment you walk through the door. One of my favorite things about living here is the unity among the women. We encourage one another, support one another, and walk through this journey together. There is a sense of belonging here that means more to me than I can put into words. I am also incredibly grateful for the in-house Bible studies that Holly and Sister Stewart lead each week. These studies have helped strengthen my faith and deepen my understanding of God's Word. Hope and Haven House has given me strength, structure, love, and, most importantly, a relationship with God. It has given me the opportunity to build a new life—one rooted in faith, recovery, gratitude, and hope. I am so thankful for where God has brought me, and I am excited for where He is leading next." 
+      }
     ];
 
     const defaultTourSlides = [
@@ -2219,97 +2655,150 @@
     ];
 
     /* ==========================================================
-       TUTORIAL WALKTHROUGH ENGINE
+       DYNAMIC TOAST ENGINE
        ========================================================== */
-    const tutorialSteps = [
-      {
-        icon: "🌸",
-        title: "Welcome, Holly!",
-        badge: "STEP 1 OF 5 • OVERVIEW",
-        desc: "This website has an active Content Management System (CMS) made specially for you. You have two ways to edit: live on the real screen, or through the page-by-page master control deck.",
-        btnText: "Next: Live Editing →"
-      },
-      {
-        icon: "✏️",
-        title: "Live On-Screen Visual Editor",
-        badge: "STEP 2 OF 5 • EDIT ON-PAGE",
-        desc: "Look at the pink toolbar floating at the bottom of your screen. When you click 'Live On-Screen Edit: ON', pink dashed boxes appear around all headlines, mission statements, and rules. Just click any text on the page to type your updates right on screen!",
-        btnText: "Next: Media & Tour →"
-      },
-      {
-        icon: "📁",
-        title: "House Tour Photos & Videos",
-        badge: "STEP 3 OF 5 • TOUR MANAGER",
-        desc: "You never need to edit code to update the House Tour! Inside the Page 2 CMS tab, click 'Upload Media from Computer / Phone' or paste image/video links. It automatically updates the live carousel with matching captions.",
-        btnText: "Next: Status & Wishlist →"
-      },
-      {
-        icon: "🛌",
-        title: "Live Bed Availability & Wishlist",
-        badge: "STEP 4 OF 5 • REAL-TIME NOTICES",
-        desc: "Update how many beds are open (e.g. '1 Bed Open — Immediate Intake') in Page 6, and add or remove clothing, toiletries, and furniture needs on Page 5. Public visitors will see changes in real-time.",
-        btnText: "Next: Saving & Exiting →"
-      },
-      {
-        icon: "💾",
-        title: "Saving Your Work & Exiting",
-        badge: "STEP 5 OF 5 • SAVE & LOCK",
-        desc: "Whenever you edit live text on-screen, click the green 'Save All Text' button on your bottom toolbar. When you're finished, click the red 'Lock' button to secure your portal. You can replay this tour anytime from the bottom toolbar!",
-        btnText: "Start Managing My Site 🚀"
-      }
-    ];
+    function showToast(message, icon = "🌸") {
+      const box = document.getElementById("toastBox");
+      const toast = document.createElement("div");
+      toast.className = "dynamic-toast";
+      toast.innerHTML = `<span>${icon}</span><span>${message}</span>`;
+      box.appendChild(toast);
 
-    function startTutorial(force = false) {
-      const hasCompleted = localStorage.getItem('hhh_admin_tut_done');
-      if (hasCompleted && !force) return;
-
-      currentTutorialStep = 0;
-      updateTutorialUi();
-      document.getElementById('adminTutorialOverlay').classList.add('active');
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(15px)";
+        toast.style.transition = "all 0.3s ease";
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
     }
 
-    function updateTutorialUi() {
-      const step = tutorialSteps[currentTutorialStep];
-      document.getElementById('tutIcon').innerText = step.icon;
-      document.getElementById('tutHeading').innerText = step.title;
-      document.getElementById('tutBadge').innerText = step.badge;
-      document.getElementById('tutDescription').innerText = step.desc;
-      document.getElementById('tutNextBtn').innerText = step.btnText;
-
-      document.getElementById('tutPrevBtn').style.display = (currentTutorialStep === 0) ? 'none' : 'inline-block';
-
-      const dots = document.querySelectorAll('.tutorial-dot');
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === currentTutorialStep);
+    function copyToClipboard(text, label = "Item") {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`Copied ${label} to clipboard!`, "📋");
+      }).catch(() => {
+        prompt("Copy to clipboard:", text);
       });
     }
 
-    function nextTutorialStep() {
-      if (currentTutorialStep < tutorialSteps.length - 1) {
-        currentTutorialStep++;
-        updateTutorialUi();
+    /* ==========================================================
+       DYNAMIC STATS COUNTER ANIMATION
+       ========================================================== */
+    function initStatCounters() {
+      const counters = document.querySelectorAll('[data-counter]');
+      const speed = 1200;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = +entry.target.getAttribute('data-counter');
+            const suffix = entry.target.getAttribute('data-suffix') || '';
+            let count = 0;
+            const step = Math.ceil(target / (speed / 30));
+
+            const update = () => {
+              count += step;
+              if (count >= target) {
+                entry.target.innerText = target + suffix;
+              } else {
+                entry.target.innerText = count + suffix;
+                setTimeout(update, 30);
+              }
+            };
+            update();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(c => observer.observe(c));
+    }
+
+    /* ==========================================================
+       DYNAMIC READINESS QUIZ
+       ========================================================== */
+    function updateReadinessScore() {
+      const checkboxes = document.querySelectorAll('.quiz-check-item input[type="checkbox"]');
+      let checkedCount = 0;
+      checkboxes.forEach(cb => { if (cb.checked) checkedCount++; });
+
+      const pct = (checkedCount / checkboxes.length) * 100;
+      document.getElementById('readinessFill').style.width = pct + '%';
+      document.getElementById('readinessPercentage').innerText = Math.round(pct) + '%';
+      
+      const badge = document.getElementById('readinessScoreBadge');
+      badge.innerText = `${checkedCount} of ${checkboxes.length} Confirmed`;
+
+      const hint = document.getElementById('readinessHint');
+      if (checkedCount === 4) {
+        badge.className = 'urgency-badge urgency-high';
+        badge.innerText = '🌸 100% Prepared for Intake';
+        hint.innerHTML = '<span style="color: #059669; font-weight:700;">✓ Excellent! You meet all core expectations for Hope & Haven residency.</span>';
+      } else if (checkedCount >= 2) {
+        badge.className = 'urgency-badge urgency-medium';
+        hint.innerText = 'Keep reviewing: ensure full commitment to daily routines and accountability.';
       } else {
-        skipTutorial();
+        badge.className = 'urgency-badge urgency-standard';
+        hint.innerText = 'Select all commitments to confirm program qualification.';
       }
     }
 
-    function prevTutorialStep() {
-      if (currentTutorialStep > 0) {
-        currentTutorialStep--;
-        updateTutorialUi();
-      }
+    /* ==========================================================
+       DYNAMIC FILTERABLE WISHLIST ENGINE
+       ========================================================== */
+    function setWishlistFilter(category, btn) {
+      activeWishlistFilter = category;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterWishlistItems();
     }
 
-    function skipTutorial() {
-      localStorage.setItem('hhh_admin_tut_done', 'true');
-      document.getElementById('adminTutorialOverlay').classList.remove('active');
+    function filterWishlistItems() {
+      const searchTerm = (document.getElementById('wishlistSearch').value || '').toLowerCase().trim();
+      const allItems = getWishlist();
+      const pubContainer = document.getElementById('publicWishlistContainer');
+      if (!pubContainer) return;
+
+      const categories = [
+        { name: "Clothing & Personal Care", icon: "👗" },
+        { name: "Food & Household Pantry", icon: "🥫" },
+        { name: "Furniture & Home Goods", icon: "🛋️" }
+      ];
+
+      pubContainer.innerHTML = '';
+      let totalVisible = 0;
+
+      categories.forEach(cat => {
+        if (activeWishlistFilter !== "All" && activeWishlistFilter !== cat.name) return;
+
+        const catItems = allItems.filter(i => {
+          const matchCat = (i.category === cat.name);
+          const matchSearch = searchTerm ? i.name.toLowerCase().includes(searchTerm) : true;
+          return matchCat && matchSearch;
+        });
+
+        const card = document.createElement('div');
+        card.className = 'wishlist-category-card';
+        let html = '';
+
+        if (catItems.length === 0) {
+          html = '<li style="color:var(--text-muted); font-style:italic;">No matching needs right now!</li>';
+        } else {
+          totalVisible += catItems.length;
+          catItems.forEach(i => {
+            const uClass = i.urgency === 'High' ? 'urgency-high' : (i.urgency === 'Medium' ? 'urgency-medium' : 'urgency-standard');
+            html += `<li><span>${i.name}</span><span class="urgency-badge ${uClass}">${i.urgency}</span></li>`;
+          });
+        }
+        card.innerHTML = `<h3>${cat.icon} ${cat.name}</h3><ul class="wishlist-ul">${html}</ul>`;
+        pubContainer.appendChild(card);
+      });
     }
 
     /* ==========================================================
        CMS ENGINE INITIALIZATION
        ========================================================== */
     document.addEventListener("DOMContentLoaded", function() {
-      initPetals();
+      initInteractivePetals();
       loadAllCmsContent();
       loadTourSlides();
       loadTimeline();
@@ -2317,6 +2806,9 @@
       loadTestimonials();
       loadWishlist();
       loadBedStatus();
+      initStatCounters();
+      setupCarouselGestures();
+      startTourAutoplay();
 
       if (sessionStorage.getItem('hhh_admin_auth') === 'true') {
         unlockAdminUi();
@@ -2324,7 +2816,7 @@
     });
 
     function getCmsTextData() {
-      const stored = localStorage.getItem('hhh_cms_text');
+      const stored = localStorage.getItem('hhh_cms_text_v3');
       return stored ? { ...defaultCmsText, ...JSON.parse(stored) } : defaultCmsText;
     }
 
@@ -2340,6 +2832,12 @@
         const key = input.getAttribute('data-cms-input');
         if (cms[key]) input.value = cms[key];
       });
+
+      const vLink = cms.venmo_link || defaultCmsText.venmo_link;
+      const homeVenmo = document.getElementById('homeVenmoLink');
+      const modalVenmo = document.getElementById('modalVenmoLink');
+      if (homeVenmo) homeVenmo.href = vLink;
+      if (modalVenmo) modalVenmo.href = vLink;
     }
 
     function handleCmsFormSave(e) {
@@ -2351,14 +2849,11 @@
         cms[key] = input.value.trim();
       });
 
-      localStorage.setItem('hhh_cms_text', JSON.stringify(cms));
+      localStorage.setItem('hhh_cms_text_v3', JSON.stringify(cms));
       loadAllCmsContent();
-      alert("✅ Changes successfully saved and published live to the website!");
+      showToast("Changes successfully saved and published live!", "💾");
     }
 
-    /* ==========================================================
-       LIVE ON-SCREEN VISUAL EDITOR
-       ========================================================== */
     function toggleLiveEditing() {
       liveEditActive = !liveEditActive;
       const body = document.body;
@@ -2372,6 +2867,7 @@
         btn.innerText = "✏️ Live On-Screen Edit: ON (Click Text)";
         btn.style.background = "#4ade80";
         btn.style.color = "#064e3b";
+        showToast("Live visual editor activated. Click any text to edit!", "✏️");
       } else {
         body.classList.remove('admin-edit-active');
         document.querySelectorAll('[data-cms]').forEach(el => {
@@ -2380,6 +2876,7 @@
         btn.innerText = "✏️ Live On-Screen Edit: OFF";
         btn.style.background = "#fbcfe8";
         btn.style.color = "#831843";
+        showToast("Visual editor turned off.", "🔒");
       }
     }
 
@@ -2390,35 +2887,28 @@
         cms[key] = el.innerText.trim();
       });
 
-      localStorage.setItem('hhh_cms_text', JSON.stringify(cms));
+      localStorage.setItem('hhh_cms_text_v3', JSON.stringify(cms));
       loadAllCmsContent();
-      alert("💾 All live text modifications have been permanently saved!");
+      showToast("All live text modifications have been permanently saved!", "✅");
     }
 
     function resetAllCmsToDefault() {
-      if (confirm("Are you sure you want to reset all site text, tour photos, schedule, and FAQs back to original defaults?")) {
-        localStorage.removeItem('hhh_cms_text');
-        localStorage.removeItem('hhh_tour_slides');
-        localStorage.removeItem('hhh_timeline');
-        localStorage.removeItem('hhh_faqs');
-        localStorage.removeItem('hhh_testimonials');
-        localStorage.removeItem('hhh_wishlist');
-        localStorage.removeItem('hhh_bed_status');
-        localStorage.removeItem('hhh_admin_tut_done');
+      if (confirm("Reset all site text, media, testimonies, and wishlist back to defaults?")) {
+        localStorage.clear();
         location.reload();
       }
     }
 
     /* ==========================================================
-       TOUR SLIDES MANAGER
+       TOUR SLIDES & DYNAMIC AUTOPLAY CAROUSEL
        ========================================================== */
     function getTourSlides() {
-      const stored = localStorage.getItem('hhh_tour_slides');
+      const stored = localStorage.getItem('hhh_tour_slides_v3');
       return stored ? JSON.parse(stored) : defaultTourSlides;
     }
 
     function saveTourSlides(slides) {
-      localStorage.setItem('hhh_tour_slides', JSON.stringify(slides));
+      localStorage.setItem('hhh_tour_slides_v3', JSON.stringify(slides));
       loadTourSlides();
     }
 
@@ -2435,8 +2925,7 @@
 
       slides.forEach((item, idx) => {
         const slide = document.createElement('div');
-        slide.className = 'carousel-slide';
-        if (idx === 0) slide.style.display = 'block';
+        slide.className = 'carousel-slide' + (idx === 0 ? ' active-slide' : '');
 
         if (item.isVideo) {
           slide.innerHTML = `
@@ -2479,6 +2968,74 @@
       showSlide(0);
     }
 
+    function showSlide(index) {
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".dot");
+      if (slides.length === 0) return;
+
+      if (index >= slides.length) slideIndex = 0;
+      if (index < 0) slideIndex = slides.length - 1;
+
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle("active-slide", idx === slideIndex);
+        const vid = slide.querySelector('video');
+        if (vid && idx !== slideIndex) vid.pause();
+      });
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("active-dot", idx === slideIndex);
+      });
+
+      resetProgressBar();
+    }
+
+    function changeSlide(step) { showSlide(slideIndex += step); }
+    function setSlide(index) { showSlide(slideIndex = index); }
+
+    function resetProgressBar() {
+      const fill = document.getElementById('slideProgress');
+      if (!fill) return;
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      setTimeout(() => {
+        fill.style.transition = 'width 4.9s linear';
+        fill.style.width = '100%';
+      }, 50);
+    }
+
+    function startTourAutoplay() {
+      pauseTourAutoplay();
+      resetProgressBar();
+      tourAutoplayTimer = setInterval(() => {
+        changeSlide(1);
+      }, 5000);
+    }
+
+    function pauseTourAutoplay() {
+      if (tourAutoplayTimer) {
+        clearInterval(tourAutoplayTimer);
+        tourAutoplayTimer = null;
+      }
+    }
+
+    function setupCarouselGestures() {
+      const container = document.getElementById('tourCarouselContainer');
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      container.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        pauseTourAutoplay();
+      }, { passive: true });
+
+      container.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) changeSlide(1);
+        if (touchEndX - touchStartX > 45) changeSlide(-1);
+        startTourAutoplay();
+      }, { passive: true });
+    }
+
     function addDirectMediaUrl() {
       const url = document.getElementById('directMediaUrl').value.trim();
       const caption = document.getElementById('directMediaCaption').value.trim() || "🌸 Hope & Haven Living Space";
@@ -2491,74 +3048,26 @@
 
       document.getElementById('directMediaUrl').value = '';
       document.getElementById('directMediaCaption').value = '';
-      alert("Slide added to House Tour!");
-    }
-
-    function triggerCloudinaryUpload() {
-      if (typeof cloudinary === 'undefined') {
-        alert("Cloudinary SDK loading. You can also paste direct image links in the box below!");
-        return;
-      }
-
-      const widget = cloudinary.createUploadWidget({
-        cloudName: CLOUD_NAME,
-        uploadPreset: UPLOAD_PRESET,
-        sources: ['local', 'camera', 'url'],
-        multiple: true,
-        resourceType: 'auto',
-        folder: 'hope_and_haven_tour'
-      }, (err, res) => {
-        if (!err && res && res.event === "success") {
-          const isVideo = res.info.resource_type === "video";
-          const url = res.info.secure_url;
-          const caption = isVideo ? "🎥 Resident Video Tour Clip" : "🌸 Hope & Haven Resident Space";
-          const slides = getTourSlides();
-          slides.push({ id: Date.now(), url, isVideo, caption });
-          saveTourSlides(slides);
-          document.getElementById('uploadFeedback').innerText = "✅ Media successfully uploaded & added!";
-        }
-      });
-      widget.open();
+      showToast("Media added to House Tour!", "🏡");
     }
 
     function deleteTourSlide(id) {
       let slides = getTourSlides();
       slides = slides.filter(s => s.id !== id);
       saveTourSlides(slides);
+      showToast("Slide removed.", "🗑️");
     }
-
-    function showSlide(index) {
-      const slides = document.querySelectorAll(".carousel-slide");
-      const dots = document.querySelectorAll(".dot");
-      if (slides.length === 0) return;
-
-      if (index >= slides.length) slideIndex = 0;
-      if (index < 0) slideIndex = slides.length - 1;
-
-      slides.forEach((slide, idx) => {
-        slide.style.display = (idx === slideIndex) ? "block" : "none";
-        const vid = slide.querySelector('video');
-        if (vid && idx !== slideIndex) vid.pause();
-      });
-
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle("active-dot", idx === slideIndex);
-      });
-    }
-
-    function changeSlide(step) { showSlide(slideIndex += step); }
-    function setSlide(index) { showSlide(slideIndex = index); }
 
     /* ==========================================================
-       TIMELINE MANAGER (STANDARDS & DAILY RHYTHM)
+       TIMELINE & FAQS & TESTIMONIALS ENGINE
        ========================================================== */
     function getTimeline() {
-      const stored = localStorage.getItem('hhh_timeline');
+      const stored = localStorage.getItem('hhh_timeline_v3');
       return stored ? JSON.parse(stored) : defaultTimeline;
     }
 
     function saveTimeline(data) {
-      localStorage.setItem('hhh_timeline', JSON.stringify(data));
+      localStorage.setItem('hhh_timeline_v3', JSON.stringify(data));
       loadTimeline();
     }
 
@@ -2610,6 +3119,7 @@
       document.getElementById('adminTimelineTime').value = '';
       document.getElementById('adminTimelineTitle').value = '';
       document.getElementById('adminTimelineDesc').value = '';
+      showToast("Schedule milestone added!", "⏰");
     }
 
     function deleteTimelineItem(id) {
@@ -2618,16 +3128,13 @@
       saveTimeline(items);
     }
 
-    /* ==========================================================
-       FAQ ACCORDION MANAGER
-       ========================================================== */
     function getFaqs() {
-      const stored = localStorage.getItem('hhh_faqs');
+      const stored = localStorage.getItem('hhh_faqs_v3');
       return stored ? JSON.parse(stored) : defaultFaqs;
     }
 
     function saveFaqs(data) {
-      localStorage.setItem('hhh_faqs', JSON.stringify(data));
+      localStorage.setItem('hhh_faqs_v3', JSON.stringify(data));
       loadFaqs();
     }
 
@@ -2678,6 +3185,7 @@
 
       document.getElementById('adminFaqQuestion').value = '';
       document.getElementById('adminFaqAnswer').value = '';
+      showToast("FAQ added!", "❓");
     }
 
     function deleteFaqItem(id) {
@@ -2687,20 +3195,16 @@
     }
 
     function toggleFaq(el) {
-      const item = el.parentElement;
-      item.classList.toggle('active');
+      el.parentElement.classList.toggle('active');
     }
 
-    /* ==========================================================
-       TESTIMONIALS MANAGER
-       ========================================================== */
     function getTestimonials() {
-      const stored = localStorage.getItem('hhh_testimonials');
+      const stored = localStorage.getItem('hhh_testimonials_v3');
       return stored ? JSON.parse(stored) : defaultTestimonials;
     }
 
     function saveTestimonials(data) {
-      localStorage.setItem('hhh_testimonials', JSON.stringify(data));
+      localStorage.setItem('hhh_testimonials_v3', JSON.stringify(data));
       loadTestimonials();
     }
 
@@ -2716,8 +3220,8 @@
           card.className = 'card';
           card.style.borderLeft = '5px solid var(--accent-pink)';
           card.innerHTML = `
-            <p style="font-style: italic; margin-bottom: 1rem;">"${i.quote}"</p>
-            <h4 style="color: var(--dark-pink);">${i.author}</h4>
+            <p style="font-style: italic; margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.7; color: #374151;">"${i.quote}"</p>
+            <h4 style="color: var(--dark-pink); font-size: 1.05rem;">${i.author}</h4>
           `;
           container.appendChild(card);
         });
@@ -2727,9 +3231,10 @@
         table.innerHTML = '';
         items.forEach(i => {
           const row = document.createElement('tr');
+          const previewText = i.quote.length > 90 ? i.quote.substring(0, 90) + '...' : i.quote;
           row.innerHTML = `
             <td><strong>${i.author}</strong></td>
-            <td style="font-size:0.85rem;">"${i.quote}"</td>
+            <td style="font-size:0.85rem;">"${previewText}"</td>
             <td><button class="admin-del-btn" onclick="deleteTestimonialItem(${i.id})">Delete</button></td>
           `;
           table.appendChild(row);
@@ -2749,6 +3254,7 @@
 
       document.getElementById('adminTestimonialAuthor').value = '';
       document.getElementById('adminTestimonialQuote').value = '';
+      showToast("Testimonial posted!", "💬");
     }
 
     function deleteTestimonialItem(id) {
@@ -2758,47 +3264,21 @@
     }
 
     /* ==========================================================
-       WISHLIST MANAGER
+       WISHLIST DATA & BED STATUS
        ========================================================== */
     function getWishlist() {
-      const stored = localStorage.getItem('hhh_wishlist');
+      const stored = localStorage.getItem('hhh_wishlist_v3');
       return stored ? JSON.parse(stored) : defaultWishlist;
     }
 
     function saveWishlist(data) {
-      localStorage.setItem('hhh_wishlist', JSON.stringify(data));
+      localStorage.setItem('hhh_wishlist_v3', JSON.stringify(data));
       loadWishlist();
     }
 
     function loadWishlist() {
+      filterWishlistItems();
       const items = getWishlist();
-      const categories = [
-        { name: "Clothing & Personal Care", icon: "👗" },
-        { name: "Food & Household Pantry", icon: "🥫" },
-        { name: "Furniture & Home Goods", icon: "🛋️" }
-      ];
-
-      const pubContainer = document.getElementById('publicWishlistContainer');
-      if (pubContainer) {
-        pubContainer.innerHTML = '';
-        categories.forEach(cat => {
-          const catItems = items.filter(i => i.category === cat.name);
-          const card = document.createElement('div');
-          card.className = 'wishlist-category-card';
-          let html = '';
-          if (catItems.length === 0) {
-            html = '<li style="color:var(--text-muted); font-style:italic;">Needs currently fulfilled!</li>';
-          } else {
-            catItems.forEach(i => {
-              const uClass = i.urgency === 'High' ? 'urgency-high' : (i.urgency === 'Medium' ? 'urgency-medium' : 'urgency-standard');
-              html += `<li><span>${i.name}</span><span class="urgency-badge ${uClass}">${i.urgency}</span></li>`;
-            });
-          }
-          card.innerHTML = `<h3>${cat.icon} ${cat.name}</h3><ul class="wishlist-ul">${html}</ul>`;
-          pubContainer.appendChild(card);
-        });
-      }
-
       const adminTbody = document.getElementById('adminWishlistTableBody');
       if (adminTbody) {
         adminTbody.innerHTML = '';
@@ -2826,17 +3306,16 @@
       items.push({ id: Date.now(), name, category, urgency });
       saveWishlist(items);
       document.getElementById('adminItemName').value = '';
+      showToast("Need added to live Wishlist!", "🎁");
     }
 
     function deleteWishlistItem(id) {
       let items = getWishlist();
       items = items.filter(i => i.id !== id);
       saveWishlist(items);
+      showToast("Item removed.", "🗑️");
     }
 
-    /* ==========================================================
-       BED STATUS BANNER
-       ========================================================== */
     function loadBedStatus() {
       const cms = getCmsTextData();
       document.getElementById('bedStatusText').innerText = cms.bed_status;
@@ -2848,13 +3327,13 @@
       if (!newText) return;
       const cms = getCmsTextData();
       cms.bed_status = newText;
-      localStorage.setItem('hhh_cms_text', JSON.stringify(cms));
+      localStorage.setItem('hhh_cms_text_v3', JSON.stringify(cms));
       loadAllCmsContent();
-      alert("Live bed availability banner updated!");
+      showToast("Live bed occupancy banner updated!", "🛏️");
     }
 
     /* ==========================================================
-       ADMIN AUTHENTICATION & LOGIN LOGIC
+       ADMIN AUTH & PORTAL NAVIGATION
        ========================================================== */
     function handleAdminAuth(e) {
       e.preventDefault();
@@ -2866,6 +3345,7 @@
         unlockAdminUi();
         document.getElementById('adminEmail').value = '';
         document.getElementById('adminPassword').value = '';
+        showToast("Authenticated as Holly Brannon (Admin)", "🌸");
         startTutorial(false);
       } else {
         document.getElementById('adminAuthError').style.display = 'block';
@@ -2884,11 +3364,8 @@
       document.getElementById('adminDashboardPanel').style.display = 'none';
       document.getElementById('adminLoginGate').style.display = 'block';
       document.getElementById('adminDock').classList.remove('active');
-      const emailField = document.getElementById('adminEmail');
-      const passField = document.getElementById('adminPassword');
-      if (emailField) emailField.value = '';
-      if (passField) passField.value = '';
       if (liveEditActive) toggleLiveEditing();
+      showToast("Admin portal locked.", "🔒");
     }
 
     function switchAdminCmsPage(pageId, btn) {
@@ -2901,19 +3378,28 @@
     }
 
     /* ==========================================================
-       TAB SWITCHER, MODAL & MULTI-STEP WIZARD
+       TAB SWITCHER, MODAL & APPLICATION WIZARD
        ========================================================== */
     function switchTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
 
       const targetTab = document.getElementById('tab-' + tabName);
       const targetBtn = document.getElementById('btn-' + tabName);
+      const navItem = document.getElementById('nav-' + tabName);
 
       if (targetTab) targetTab.classList.add('active');
       if (targetBtn) targetBtn.classList.add('active');
+      if (navItem) navItem.classList.add('active');
 
-      if (tabName === 'tour') showSlide(slideIndex);
+      if (tabName === 'tour') {
+        showSlide(slideIndex);
+        startTourAutoplay();
+      } else {
+        pauseTourAutoplay();
+      }
+
       window.scrollTo({ top: 380, behavior: 'smooth' });
     }
 
@@ -2931,7 +3417,7 @@
 
     function navigateStep(dir) {
       if (dir === 1 && !validateStep(currentStep)) {
-        alert("Please complete all required fields marked with (*) before continuing.");
+        showToast("Please fill all required fields before continuing.", "⚠️");
         return;
       }
       document.getElementById(`step-${currentStep}`).classList.remove('active-step');
@@ -2964,21 +3450,35 @@
       document.getElementById('poDetailsGroup').style.display = show ? 'block' : 'none';
     }
 
-    /* Falling Petals Background Canvas */
-    function initPetals() {
+    /* ==========================================================
+       PHYSICS-ENABLED INTERACTIVE PETALS (CANVAS)
+       ========================================================== */
+    function initInteractivePetals() {
       const canvas = document.getElementById('petalCanvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
       let width = canvas.width = canvas.offsetWidth;
       let height = canvas.height = canvas.offsetHeight;
+      let mouse = { x: -1000, y: -1000 };
 
       window.addEventListener('resize', () => {
         width = canvas.width = canvas.offsetWidth;
         height = canvas.height = canvas.offsetHeight;
       });
 
-      const petals = Array.from({ length: 24 }).map(() => ({
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      canvas.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+
+      const petals = Array.from({ length: 30 }).map(() => ({
         x: Math.random() * width,
         y: Math.random() * height,
         size: Math.random() * 8 + 6,
@@ -2986,12 +3486,35 @@
         speedY: Math.random() * 1.2 + 0.8,
         rotation: Math.random() * 360,
         rotSpeed: Math.random() * 2 - 1,
-        opacity: Math.random() * 0.45 + 0.25
+        opacity: Math.random() * 0.45 + 0.25,
+        vx: 0,
+        vy: 0
       }));
 
       function render() {
         ctx.clearRect(0, 0, width, height);
         petals.forEach(p => {
+          // Mouse gentle repulsion physics
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 110) {
+            const force = (110 - dist) / 110;
+            p.vx += (dx / dist) * force * 1.8;
+            p.vy += (dy / dist) * force * 1.8;
+          }
+
+          p.vx *= 0.94;
+          p.vy *= 0.94;
+
+          p.x += p.speedX + p.vx;
+          p.y += p.speedY + p.vy;
+          p.rotation += p.rotSpeed;
+
+          if (p.y > height + 20) { p.y = -15; p.x = Math.random() * width; }
+          if (p.x > width + 20) p.x = -15;
+          if (p.x < -20) p.x = width + 15;
+
           ctx.save();
           ctx.translate(p.x, p.y);
           ctx.rotate((p.rotation * Math.PI) / 180);
@@ -3000,14 +3523,6 @@
           ctx.fillStyle = `rgba(255, 215, 230, ${p.opacity})`;
           ctx.fill();
           ctx.restore();
-
-          p.x += p.speedX;
-          p.y += p.speedY;
-          p.rotation += p.rotSpeed;
-
-          if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
-          if (p.x > width) p.x = 0;
-          if (p.x < 0) p.x = width;
         });
         requestAnimationFrame(render);
       }
